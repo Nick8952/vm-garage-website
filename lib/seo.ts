@@ -32,10 +32,38 @@ export function seitenMetadata(seite: Seite, e: Einstellungen): Metadata {
   };
 }
 
+const SCHEMA_WOCHENTAG: Record<NonNullable<Einstellungen["oeffnungszeiten"][number]["wochentag"]>, string> = {
+  Montag: "https://schema.org/Monday",
+  Dienstag: "https://schema.org/Tuesday",
+  Mittwoch: "https://schema.org/Wednesday",
+  Donnerstag: "https://schema.org/Thursday",
+  Freitag: "https://schema.org/Friday",
+  Samstag: "https://schema.org/Saturday",
+  Sonntag: "https://schema.org/Sunday",
+};
+
+/**
+ * Strukturierte Öffnungszeiten (dayOfWeek + opens/closes) für die Tage, die dafür gepflegt sind
+ * (`wochentag`, `von`, `bis` in Oeffnungszeit). Geschlossene Tage werden ausgelassen (kein
+ * «geöffnet 00:00–00:00») statt mit einer eigenen closesSpecification modelliert.
+ */
+function oeffnungszeitenJsonLd(zeiten: Einstellungen["oeffnungszeiten"]): Record<string, unknown>[] | undefined {
+  const eintraege = zeiten
+    .filter((z) => !z.geschlossen && z.wochentag && z.von && z.bis)
+    .map((z) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: SCHEMA_WOCHENTAG[z.wochentag!],
+      opens: z.von,
+      closes: z.bis,
+    }));
+  return eintraege.length ? eintraege : undefined;
+}
+
 /**
  * Strukturierte Daten für den Betrieb – ausschliesslich belegte Angaben
- * (Name, Adresse, Telefon, Gründungsjahr, Geschäftsführung, UID). Keine Öffnungszeiten,
- * Bewertungen, Preise oder E-Mail, weil dafür keine aktuellen Belege vorliegen.
+ * (Name, Adresse, Telefon, Gründungsjahr, Geschäftsführung, UID, Öffnungszeiten – sofern
+ * strukturiert gepflegt). Keine Bewertungen (`aggregateRating`/`review`) oder Preise, weil
+ * die auf der Website gezeigten Zitate keine geprüften, aggregierbaren Fakten sind.
  */
 export function betriebJsonLd(e: Einstellungen): Record<string, unknown> {
   return {
@@ -55,9 +83,7 @@ export function betriebJsonLd(e: Einstellungen): Record<string, unknown> {
       addressCountry: "CH",
     },
     vatID: sauber(e.uid),
-    openingHoursSpecification: e.oeffnungszeiten.length
-      ? e.oeffnungszeiten.map((z) => ({ "@type": "OpeningHoursSpecification", description: `${sauber(z.tage)}: ${sauber(z.zeiten)}` }))
-      : undefined,
+    openingHoursSpecification: oeffnungszeitenJsonLd(e.oeffnungszeiten),
     areaServed: { "@type": "City", name: "Zürich" },
   };
 }

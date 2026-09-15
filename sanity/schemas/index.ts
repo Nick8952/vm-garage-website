@@ -1,6 +1,6 @@
 import { adresseTyp, bildTyp, linkTyp, oeffnungszeitTyp, richTextTyp } from "./objekte";
 import { bausteine } from "./bausteine";
-import { einstellungenTyp, leistungTyp, rechtstextTyp, seiteTyp } from "./dokumente";
+import { bewertungTyp, einstellungenTyp, leistungTyp, rechtstextTyp, seiteTyp } from "./dokumente";
 
 export const schemaTypes = [
   // Objekte
@@ -14,5 +14,6 @@ export const schemaTypes = [
   einstellungenTyp,
   seiteTyp,
   leistungTyp,
+  bewertungTyp,
   rechtstextTyp,
 ];

@@ -12,7 +12,63 @@
   },
   "telefon": "044 450 43 73",
   "uid": "CHE-112.785.667",
-  "oeffnungszeiten": [],
+  "oeffnungszeiten": [
+    {
+      "_key": "mo",
+      "tage": "Montag",
+      "zeiten": "08.00 – 17.30 Uhr",
+      "wochentag": "Montag",
+      "von": "08:00",
+      "bis": "17:30"
+    },
+    {
+      "_key": "di",
+      "tage": "Dienstag",
+      "zeiten": "07.30 – 17.30 Uhr",
+      "wochentag": "Dienstag",
+      "von": "07:30",
+      "bis": "17:30"
+    },
+    {
+      "_key": "mi",
+      "tage": "Mittwoch",
+      "zeiten": "07.30 – 17.30 Uhr",
+      "wochentag": "Mittwoch",
+      "von": "07:30",
+      "bis": "17:30"
+    },
+    {
+      "_key": "do",
+      "tage": "Donnerstag",
+      "zeiten": "08.00 – 17.30 Uhr",
+      "wochentag": "Donnerstag",
+      "von": "08:00",
+      "bis": "17:30"
+    },
+    {
+      "_key": "fr",
+      "tage": "Freitag",
+      "zeiten": "07.30 – 17.30 Uhr",
+      "wochentag": "Freitag",
+      "von": "07:30",
+      "bis": "17:30"
+    },
+    {
+      "_key": "sa",
+      "tage": "Samstag",
+      "zeiten": "geschlossen",
+      "wochentag": "Samstag",
+      "geschlossen": true
+    },
+    {
+      "_key": "so",
+      "tage": "Sonntag",
+      "zeiten": "geschlossen",
+      "wochentag": "Sonntag",
+      "geschlossen": true
+    }
+  ],
+  "oeffnungszeitenHinweis": "Laut öffentlichem Google-Eintrag, nicht vom Unternehmen bestätigt – bitte vor einem Besuch telefonisch prüfen.",
   "routenlink": "https://www.google.com/maps/dir/?api=1&destination=Weststrasse+117%2C+8003+Z%C3%BCrich",
   "navigation": [
     {

@@ -1,6 +1,7 @@
 import type { Baustein, Einstellungen, Leistung } from "@/lib/content/types";
 import { Abschnitt } from "../Abschnitt";
 import { Auftragsblatt } from "../Auftragsblatt";
+import { Bewertungen } from "../Bewertungen";
 import { Bild } from "../Bild";
 import { Kontakt } from "../Kontakt";
 import { RichText } from "../RichText";
@@ -44,6 +45,12 @@ export function Bausteine({ bausteine, e, leistungen }: Props) {
                     </div>
                   ))}
                 </dl>
+              </Abschnitt>
+            );
+          case "bewertungenBaustein":
+            return (
+              <Abschnitt key={b._key} kurzzeile={b.kurzzeile} titel={b.titel} einleitung={b.einleitung} grund={grund}>
+                <Bewertungen b={b} />
               </Abschnitt>
             );
           case "spaltenBaustein":

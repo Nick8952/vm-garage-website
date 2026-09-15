@@ -15,8 +15,9 @@
 ## Offene Unternehmensangaben (beim Kunden abfragen)
 
 1. Hausnummer am Eingang: 117, 119 oder 117/119?
-2. Aktuelle **Öffnungszeiten** (2013: Mo–Fr 07:30–12:00, 13:00–17:30, Sa nach Vereinbarung – unbestätigt).
+2. **Öffnungszeiten bestätigen**: Die Demo zeigt jetzt die Zeiten aus dem öffentlichen Google-Eintrag (Mo 08.00–17.30, Di–Mi 07.30–17.30, Do 08.00–17.30, Fr 07.30–17.30, Sa/So geschlossen) mit sichtbarem Hinweis «nicht vom Unternehmen bestätigt». Sobald der Kunde bestätigt, `oeffnungszeitenHinweis` in data/einstellungen.json leeren.
 3. Eine funktionierende **E-Mail-Adresse** (info@vm-garage.ch ist technisch tot). Dann `email` in den Einstellungen setzen.
+2b. **Google-Bewertungen bestätigen/freigeben**: Über uns zeigt 4 wörtliche Google-Rezensionen (von 16 insgesamt). Falls der Kunde das nicht möchte, den Baustein `bewertungenBaustein` aus data/seiten/ueber-uns.json entfernen.
 4. Bestätigung des **Leistungsumfangs** (Abgaswartung, Lenkgeometrie, Occasionen, Ersatzwagen) und ggf. Ergänzungen (Klimaservice, MFK-Vorbereitung o. ä. nur, wenn wirklich angeboten).
 5. **Fotos** (Werkstatt, Team, Fahrzeuge) und ein Logo, falls vorhanden; Rechte am Archivfoto.
 6. Gehört die Domain **vm-garage.ch** noch dem Kunden? Sonst neue Domain.

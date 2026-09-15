@@ -128,6 +128,14 @@
       ]
     },
     {
+      "_type": "bewertungenBaustein",
+      "_key": "ueber-bewertungen",
+      "kurzzeile": "Google-Rezensionen",
+      "titel": "Was Kundinnen und Kunden sagen",
+      "einleitung": "Auswahl von 4 der 16 Bewertungen aus dem öffentlichen Google-Eintrag der V & M Garage GmbH, abgerufen am 15.09.2026 – nicht aus dieser Demo und nicht redaktionell bearbeitet. Die Datumsangaben sind unverändert die Anzeige von Google zum Abrufzeitpunkt und altern seither nicht mit.",
+      "bewertungen": []
+    },
+    {
       "_type": "aufrufBaustein",
       "_key": "ueber-aufruf",
       "titel": "Lernen Sie uns kennen.",

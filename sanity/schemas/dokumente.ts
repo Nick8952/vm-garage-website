@@ -32,6 +32,13 @@ export const einstellungenTyp = defineType({
       of: [defineArrayMember({ type: "oeffnungszeit" })],
       description: "Leer lassen, solange keine verbindlichen Zeiten bekannt sind – die Website zeigt dann «bitte telefonisch erfragen».",
     }),
+    defineField({
+      name: "oeffnungszeitenHinweis",
+      title: "Herkunft der Öffnungszeiten",
+      type: "string",
+      group: "kontakt",
+      description: "Nur ausfüllen, wenn die Zeiten NICHT vom Unternehmen selbst bestätigt sind, z. B. «laut Google-Eintrag, nicht vom Unternehmen bestätigt». Leer lassen, sobald der Kunde die Zeiten bestätigt hat.",
+    }),
     defineField({ name: "navigation", title: "Hauptnavigation", type: "array", group: "navigation", of: [defineArrayMember({ type: "link" })], validation: (r) => r.required().min(1).max(6) }),
     defineField({ name: "rechtslinks", title: "Links im Footer (Rechtliches)", type: "array", group: "navigation", of: [defineArrayMember({ type: "link" })] }),
     defineField({ name: "demoHinweis", title: "Demo-Hinweis", type: "string", group: "navigation", description: "Kurzer Hinweis am Seitenende, solange die Website eine Demo ist. Leer = kein Hinweis." }),
@@ -95,6 +102,24 @@ export const seiteTyp = defineType({
     defineField({ name: "seoBeschreibung", title: "Beschreibung (Suchergebnis)", type: "text", rows: 3, group: "seo", validation: (r) => r.max(160).warning("Suchmaschinen zeigen meist nur ~160 Zeichen.") }),
   ],
   preview: { select: { title: "titel", subtitle: "slug.current" } },
+});
+
+export const bewertungTyp = defineType({
+  name: "bewertung",
+  title: "Bewertung",
+  type: "document",
+  description: "Wörtliches Kundenzitat mit Quelle. Nie erfinden oder umformulieren – nur unverändert aus einer echten, nachprüfbaren Quelle übernehmen.",
+  fields: [
+    defineField({ name: "autor", title: "Name der bewertenden Person", type: "string", validation: (r) => r.required() }),
+    defineField({ name: "sterne", title: "Sterne", type: "number", validation: (r) => r.required().integer().min(1).max(5) }),
+    defineField({ name: "text", title: "Text (wörtlich)", type: "text", rows: 4, description: "Unverändert aus der Quelle übernehmen, keine Kürzung ohne «…».", validation: (r) => r.required() }),
+    defineField({ name: "datum", title: "Datum (Anzeigeformat der Quelle)", type: "string", description: "z. B. «vor 3 Monaten» – exaktes Datum ist bei den meisten Portalen nicht bekannt." }),
+    defineField({ name: "quelle", title: "Quelle", type: "string", description: "z. B. «Google-Rezension»", validation: (r) => r.required() }),
+    defineField({ name: "quellUrl", title: "Link zur Quelle", type: "url" }),
+    defineField({ name: "reihenfolge", title: "Reihenfolge", type: "number", validation: (r) => r.required().integer() }),
+  ],
+  orderings: [{ title: "Reihenfolge", name: "reihenfolge", by: [{ field: "reihenfolge", direction: "asc" }] }],
+  preview: { select: { title: "autor", subtitle: "quelle" } },
 });
 
 export const leistungTyp = defineType({

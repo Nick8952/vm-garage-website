@@ -83,6 +83,25 @@ export const faktenBaustein = defineType({
   preview: { select: { title: "titel" }, prepare: ({ title }) => ({ title: title || "Fakten" }) },
 });
 
+export const bewertungenBaustein = defineType({
+  name: "bewertungenBaustein",
+  title: "Bewertungen",
+  type: "object",
+  description: "Zeigt wörtliche Kundenzitate aus dem Dokumenttyp «Bewertung» (nie hier neu erfinden – Zitate im jeweiligen Dokument pflegen).",
+  fields: [
+    ...kopf,
+    defineField({ name: "einleitung", title: "Einleitung", type: "text", rows: 2 }),
+    defineField({
+      name: "bewertungen",
+      title: "Auswahl",
+      type: "array",
+      of: [defineArrayMember({ type: "reference", to: [{ type: "bewertung" }] })],
+      description: "Leer lassen = alle Bewertungen in ihrer Reihenfolge.",
+    }),
+  ],
+  preview: { select: { title: "titel" }, prepare: ({ title }) => ({ title: title || "Bewertungen" }) },
+});
+
 export const spaltenBaustein = defineType({
   name: "spaltenBaustein",
   title: "Spalten",
@@ -157,5 +176,5 @@ export const rechtstextBaustein = defineType({
   preview: { select: { title: "rechtstext.titel" }, prepare: ({ title }) => ({ title: title || "Rechtstext" }) },
 });
 
-export const bausteine = [textBaustein, leistungenBaustein, faktenBaustein, spaltenBaustein, bildBaustein, kontaktBaustein, aufrufBaustein, rechtstextBaustein];
+export const bausteine = [textBaustein, leistungenBaustein, faktenBaustein, bewertungenBaustein, spaltenBaustein, bildBaustein, kontaktBaustein, aufrufBaustein, rechtstextBaustein];
 export const bausteinMitglieder = bausteine.map((b) => defineArrayMember({ type: b.name }));

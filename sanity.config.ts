@@ -30,6 +30,7 @@ export default defineConfig({
             S.divider(),
             S.documentTypeListItem("seite").title("Seiten"),
             S.documentTypeListItem("leistung").title("Leistungen"),
+            S.documentTypeListItem("bewertung").title("Bewertungen"),
             S.documentTypeListItem("rechtstext").title("Rechtstexte"),
           ]),
     }),
@@ -50,6 +51,10 @@ export default defineConfig({
           leistung: defineLocations({
             select: { titel: "titel" },
             resolve: (doc) => ({ locations: [{ title: `${doc?.titel ?? "Leistung"} – Leistungen`, href: "/leistungen" }, { title: "Startseite", href: "/" }] }),
+          }),
+          bewertung: defineLocations({
+            select: { autor: "autor" },
+            resolve: (doc) => ({ locations: [{ title: `Bewertung von ${doc?.autor ?? "?"}`, href: "/ueber-uns" }] }),
           }),
           rechtstext: defineLocations({
             select: { art: "art", titel: "titel" },

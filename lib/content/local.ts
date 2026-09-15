@@ -1,7 +1,7 @@
 import "server-only";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
-import type { Baustein, Bild, Einstellungen, Inhaltsquelle, Leistung, Rechtstext, Seite } from "./types";
+import type { Baustein, Bewertung, Bild, Einstellungen, Inhaltsquelle, Leistung, Rechtstext, Seite } from "./types";
 
 /**
  * Lokale Inhaltsquelle: liest die JSON-Dateien in data/.
@@ -56,6 +56,7 @@ async function bildPflicht(ref: BildReferenz, kontext: string): Promise<Bild> {
 type RohEinstellungen = Omit<Einstellungen, "seo"> & { seo: Omit<Einstellungen["seo"], "bild"> & { bild?: BildReferenz } };
 type RohBaustein =
   | (Omit<Extract<Baustein, { _type: "leistungenBaustein" }>, "leistungen"> & { leistungen?: string[] })
+  | (Omit<Extract<Baustein, { _type: "bewertungenBaustein" }>, "bewertungen"> & { bewertungen?: string[] })
   | (Omit<Extract<Baustein, { _type: "bildBaustein" }>, "bild"> & { bild: BildReferenz })
   | (Omit<Extract<Baustein, { _type: "rechtstextBaustein" }>, "rechtstext"> & { rechtstext: Rechtstext["art"] })
   | Extract<Baustein, { _type: "textBaustein" | "faktenBaustein" | "spaltenBaustein" | "kontaktBaustein" | "aufrufBaustein" }>;
@@ -63,6 +64,11 @@ type RohSeite = Omit<Seite, "bausteine"> & { bausteine: RohBaustein[] };
 
 async function leistungen(): Promise<Leistung[]> {
   const liste = await json<Leistung[]>("leistungen.json");
+  return [...liste].sort((a, b) => a.reihenfolge - b.reihenfolge);
+}
+
+async function bewertungen(): Promise<Bewertung[]> {
+  const liste = await json<Bewertung[]>("bewertungen.json");
   return [...liste].sort((a, b) => a.reihenfolge - b.reihenfolge);
 }
 
@@ -82,6 +88,11 @@ async function baustein(roh: RohBaustein, seite: string): Promise<Baustein> {
       const alle = await leistungen();
       const auswahl = roh.leistungen?.length ? alle.filter((l) => roh.leistungen!.includes(l.id)) : alle;
       return { ...roh, leistungen: auswahl };
+    }
+    case "bewertungenBaustein": {
+      const alle = await bewertungen();
+      const auswahl = roh.bewertungen?.length ? alle.filter((b) => roh.bewertungen!.includes(b.id)) : alle;
+      return { ...roh, bewertungen: auswahl };
     }
     case "bildBaustein":
       return { ...roh, bild: await bildPflicht(roh.bild, ort) };
@@ -118,5 +129,6 @@ export const lokaleQuelle: Inhaltsquelle = {
   },
 
   getLeistungen: leistungen,
+  getBewertungen: bewertungen,
   getRechtstext: rechtstext,
 };

@@ -57,14 +57,17 @@ export function Kontakt({ b, e, leistungen }: { b: KontaktBaustein; e: Einstellu
             <dt className="etikett pt-1">Zeiten</dt>
             <dd>
               {e.oeffnungszeiten.length ? (
-                <ul>
-                  {e.oeffnungszeiten.map((z) => (
-                    <li key={z._key} className="flex flex-wrap gap-x-3">
-                      <span className="font-semibold">{z.tage}</span>
-                      <span>{z.zeiten}</span>
-                    </li>
-                  ))}
-                </ul>
+                <>
+                  <ul>
+                    {e.oeffnungszeiten.map((z) => (
+                      <li key={z._key} className="flex flex-wrap gap-x-3">
+                        <span className="font-semibold">{z.tage}</span>
+                        <span>{z.zeiten}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {e.oeffnungszeitenHinweis && <p className="mt-2 text-sm text-stahl">{e.oeffnungszeitenHinweis}</p>}
+                </>
               ) : (
                 <p>
                   Öffnungszeiten und Termine bitte telefonisch erfragen.

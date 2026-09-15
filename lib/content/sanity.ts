@@ -4,7 +4,7 @@ import { client, vorschauClient } from "@/sanity/client";
 import { sanityPruefen } from "@/sanity/env";
 import { BILD_PROJEKTION, sanityBild, type SanityBildRoh } from "@/sanity/bild";
 import { istVorschau } from "@/lib/vorschau/status";
-import type { Baustein, Einstellungen, Inhaltsquelle, Leistung, Rechtstext, Seite } from "./types";
+import type { Baustein, Bewertung, Einstellungen, Inhaltsquelle, Leistung, Rechtstext, Seite } from "./types";
 
 /**
  * Sanity-Inhaltsquelle (für Vercel). Liefert exakt dieselben Typen wie lib/content/local.ts.
@@ -27,6 +27,7 @@ async function abfrage<T>(query: string, params: Record<string, unknown> = {}): 
 
 const LINK = `{ titel, ziel, extern }`;
 const LEISTUNG = `{ "id": _id, titel, kurz, inhalt, gruppe, reihenfolge }`;
+const BEWERTUNG = `{ "id": _id, autor, sterne, text, datum, quelle, quellUrl, reihenfolge }`;
 const RECHTSTEXT = `{ "id": _id, art, titel, stand, inhalt }`;
 
 const BAUSTEINE = `bausteine[] {
@@ -40,6 +41,13 @@ const BAUSTEINE = `bausteine[] {
     )
   },
   _type == "faktenBaustein" => { fakten[] { _key, bezeichnung, wert } },
+  _type == "bewertungenBaustein" => {
+    einleitung,
+    "bewertungen": select(
+      coalesce(count(bewertungen), 0) > 0 => bewertungen[]-> ${BEWERTUNG},
+      *[_type == "bewertung"] | order(reihenfolge asc) ${BEWERTUNG}
+    )
+  },
   _type == "spaltenBaustein" => { spalten[] { _key, titel, inhalt } },
   _type == "bildBaustein" => { text, bild ${BILD_PROJEKTION} },
   _type == "kontaktBaustein" => { einleitung, mitFormular, formularHinweis },
@@ -49,7 +57,7 @@ const BAUSTEINE = `bausteine[] {
 
 const EINSTELLUNGEN_QUERY = defineQuery(`*[_type == "einstellungen"][0] {
   firmenname, kurzname, claim, geschaeftsfuehrung, gegruendet, adresse, telefon, email, uid, routenlink, demoHinweis,
-  oeffnungszeiten[] { _key, tage, zeiten },
+  oeffnungszeiten[] { _key, tage, zeiten, wochentag, von, bis, geschlossen }, oeffnungszeitenHinweis,
   navigation[] ${LINK},
   rechtslinks[] ${LINK},
   seo { titelZusatz, beschreibung, bild ${BILD_PROJEKTION} }
@@ -67,6 +75,9 @@ const bildAus = (o: unknown, alt = "") => sanityBild(o as SanityBildRoh | undefi
 function leistungAufbereiten(l: Roh): Leistung {
   return { ...(l as object), inhalt: (l.inhalt as Leistung["inhalt"]) ?? undefined } as Leistung;
 }
+function bewertungAufbereiten(b: Roh): Bewertung {
+  return b as unknown as Bewertung;
+}
 
 function bausteinAufbereiten(b: Roh): Baustein {
   switch (b._type) {
@@ -75,6 +86,8 @@ function bausteinAufbereiten(b: Roh): Baustein {
       return { ...(b as object), leistungen: ((b.leistungen as Roh[]) ?? []).map(leistungAufbereiten).sort((x, y) => x.reihenfolge - y.reihenfolge) } as Baustein;
     case "faktenBaustein":
       return { ...(b as object), fakten: (b.fakten as unknown[]) ?? [] } as Baustein;
+    case "bewertungenBaustein":
+      return { ...(b as object), bewertungen: ((b.bewertungen as Roh[]) ?? []).map(bewertungAufbereiten).sort((x, y) => x.reihenfolge - y.reihenfolge) } as Baustein;
     case "spaltenBaustein":
       return { ...(b as object), spalten: (b.spalten as unknown[]) ?? [] } as Baustein;
     case "bildBaustein": {
@@ -117,6 +130,10 @@ export const sanityQuelle: Inhaltsquelle = {
 
   async getLeistungen() {
     return (await abfrage<Roh[]>(`*[_type == "leistung"] | order(reihenfolge asc) ${LEISTUNG}`)).map(leistungAufbereiten);
+  },
+
+  async getBewertungen() {
+    return (await abfrage<Roh[]>(`*[_type == "bewertung"] | order(reihenfolge asc) ${BEWERTUNG}`)).map(bewertungAufbereiten);
   },
 
   async getRechtstext(art) {

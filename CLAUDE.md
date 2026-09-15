@@ -28,7 +28,7 @@ keine Zugänge verlangen – das macht Nick selbst (`docs/SANITY-VERCEL-EINRICHT
 - **Inhaltsschnittstelle `lib/content/`**: Komponenten importieren nur `lib/content` (Typen + `inhaltsquelle()`).
   `local.ts` liest `data/`, `sanity.ts` fragt GROQ ab – beide liefern dieselben Typen aus `types.ts`.
   `CONTENT_SOURCE=sanity` ohne Projekt-ID bricht den Build absichtlich ab.
-- **Bausteine** (`components/bausteine/Bausteine.tsx`): text, leistungen (Auftragsblatt), fakten, spalten, bild, kontakt, aufruf,
+- **Bausteine** (`components/bausteine/Bausteine.tsx`): text, leistungen (Auftragsblatt), fakten, bewertungen (Google-Zitate), spalten, bild, kontakt, aufruf,
   rechtstext. Sanity-Schemas in `sanity/schemas/` (deutsche Feldnamen, Hilfetexte, Validierung). Lokale JSON ist wie
   Sanity-Dokumente aufgebaut (`_type`, `_key`, Portable Text). Neuer Baustein = Typ + Schema + Fall im Renderer + `inhalt-pruefen`.
 - **Bilder**: Originale in `assets/originale/` (Herkunft: `HERKUNFT.md`), `npm run bilder` → `public/images/` + `data/bilder.json`.
@@ -65,7 +65,11 @@ Für fullPage-Screenshots `prefers-reduced-motion: reduce` emulieren, sonst wirk
   Leistungen als **Auftragsblatt** (Kästchen, Linienraster, «Anfragen» → `/kontakt?anliegen=`). Nichts davon in anderen Demos wiederverwenden.
 - Bewegung: Band fährt beim Laden ein (`clip-path`), Abschnitte erscheinen per `animation-timeline: view()`; `prefers-reduced-motion` schaltet alles ab.
 - Touch-Ziele ≥ 44 px (Ausnahme: Links im Fliesstext), sichtbarer Fokus, keine Emojis als Icons (Inline-SVG in `components/Icons.tsx`).
-- Keine erfundenen Öffnungszeiten, Preise, Bewertungen, Markenpartner, Zertifikate, Teamnamen.
+- Keine erfundenen Öffnungszeiten, Preise, Bewertungen, Markenpartner, Zertifikate, Teamnamen. Öffnungszeiten und Bewertungen stammen
+  vom öffentlichen Google-Eintrag (nicht vom Unternehmen bestätigt) – Herkunft immer sichtbar (`oeffnungszeitenHinweis`, «Google-Rezension»
+  mit Datum/Link), nie als geprüfte Fakten dargestellt. `Oeffnungszeit` trägt neben dem sichtbaren Text optionale strukturierte Felder
+  (`wochentag`/`von`/`bis`/`geschlossen`), aus denen `lib/seo.ts` ein echtes `openingHoursSpecification` (`dayOfWeek`/`opens`/`closes`,
+  geschlossene Tage ausgelassen) baut. JSON-LD bekommt diese Zeiten, aber bewusst **kein** `aggregateRating`/`review`.
 
 ## Datenschutz-Technik (Demo)
 

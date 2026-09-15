@@ -1,4 +1,4 @@
-# Prüfbericht – vm-garage-website (Stand 15.09.2026)
+# Prüfbericht – vm-garage-website (Stand 15.09.2026, 2. Runde: Google-Rezensionen/Öffnungszeiten ergänzt)
 
 Alle Browser-Tests sind **Geräte-Emulation** (Chrome headless via puppeteer-core, Viewports 360/390/768/1440, `isMobile` + `hasTouch`
 bei < 500 px). **Keine Tests auf echten Geräten und keinem echten Screenreader** – offen.
@@ -8,10 +8,10 @@ bei < 500 px). **Keine Tests auf echten Geräten und keinem echten Screenreader*
 | Prüfung | Ergebnis |
 |---|---|
 | `npm run typecheck`, `npm run lint` | fehlerfrei |
-| `npm run inhalt:pruefen` | 6 Seiten, 7 Leistungen, 1 Bild, 8 interne Links – in Ordnung |
+| `npm run inhalt:pruefen` | 6 Seiten, 7 Leistungen, 4 Bewertungen, 1 Bild, interne Links geprüft – in Ordnung |
 | `npm run build:pages` ohne jede Env-Variable | 9 HTML-Dateien (6 Seiten, 404, _not-found, icon) |
 | `npm run export:pruefen` | 279 interne Verweise unter `/vm-garage-website`, keine fehlenden Ziele, keine externen Ressourcen, noindex überall |
-| `npm run seed -- --probe` | 16 Dokumente + 1 Bild ohne Schreibzugriff zusammengestellt |
+| `npm run seed -- --probe` | 20 Dokumente (inkl. 4 Bewertungen) + 1 Bild ohne Schreibzugriff zusammengestellt |
 | `npm run build:vercel` (Platzhalter-Projekt-ID, lokale Inhalte) | kompiliert: `/api/revalidate`, `/api/vorschau/*` (dynamisch), `/studio/[[...tool]]` (statisch) – nur lokal, nicht auf Vercel |
 
 ## GitHub Pages (live)
@@ -27,8 +27,8 @@ bei < 500 px). **Keine Tests auf echten Geräten und keinem echten Screenreader*
 
 - Kein horizontales Scrollen, keine Elemente über den Viewport hinaus (`scrollWidth` = `clientWidth`, Bounding-Box-Audit) auf allen 7 Seiten × 4 Breiten.
 - Touch-Ziele: alle Knöpfe/Navigationslinks ≥ 44 × 44 px. Ausnahmen (bewusst, WCAG-Inline-Ausnahme): Links im Fliesstext der Rechtstexte
-  (E-Mail, Telefon, GitHub-Datenschutzerklärung) und der Skip-Link (nur bei Fokus sichtbar).
-- Screenshots (Scratchpad) visuell geprüft; behobene Befunde: zwei rote Bänder direkt übereinander (Aufruf + Footer) → Aufruf jetzt Zettel mit
+  (E-Mail, Telefon, GitHub-Datenschutzerklärung), die Quellenangabe «Google-Rezension» in den Bewertungskarten, und der Skip-Link (nur bei Fokus sichtbar).
+- Screenshots inkl. neuer Bewertungen-Sektion (360–1440 px) visuell geprüft; behobene Befunde: zwei rote Bänder direkt übereinander (Aufruf + Footer) → Aufruf jetzt Zettel mit
   rotem Streifen; Fakten-Raster mit leerer grauer Zelle bei 5 Einträgen; Archivbild wurde über 400 px hinaus vergrössert; Datenschutz-Dialog
   ragte auf 390 px über den Viewport hinaus (jetzt scrollbar); Footer-Band bei 768 px zu eng (Zweispaltigkeit erst ab `lg`).
 
@@ -38,6 +38,7 @@ bei < 500 px). **Keine Tests auf echten Geräten und keinem echten Screenreader*
 |---|---|
 | Mobilmenü (`<dialog>`) | öffnet per Knopf, Fokus im Dialog, Esc schliesst, Fokus kehrt zu «Menü öffnen» zurück, schliesst bei Seitenwechsel |
 | Anfrage-Assistent | Pflichtfeld «Anliegen» ohne Auswahl → Fehlermeldung (`role=alert`), `aria-invalid`, Fokus auf Select; mit Angaben → Text wird zusammengestellt; Knöpfe «Text kopieren» + «Anrufen» (kein «Absenden», keine Erfolgsmeldung); `?anliegen=pneuservice` belegt die Auswahl vor |
+| Bewertungen (Über uns) | 4 Karten, Sterne dekorativ (`aria-hidden`) + `sr-only`-Text «X von 5 Sternen», Quelle als Link zum Google-Profil (`target=_blank`, `rel=noopener noreferrer`), kein horizontaler Überlauf bei 360–1440 px |
 | Datenschutz-Einstellungen (`<dialog>`) | öffnet, Fokus auf Schliessen-Knopf, Esc schliesst, Fokus zurück zum Footer-Knopf |
 | Telefon-/Routen-/E-Mail-Links | `tel:+41444504373`, Google-Maps-Route (neuer Tab, `rel="noopener noreferrer"`), `mailto:` nur im Impressum/Datenschutz (Demo-Betreiber) |
 | Alle internen Links | 13 Ziele auf 6 Seiten gesammelt, alle → 200 |
@@ -82,6 +83,21 @@ Person»; Kontrastwerte korrigiert (dabei Weiss/90 % auf Rot mit 4.0:1 entdeckt 
 für `0041`/`+41`; Impressum trennt neu verfasste Texte von übernommenen Firmenzitaten.
 Nicht übernommen (1): «Seit 2006 an der Weststrasse» sei unbelegt – die SHAB-Neueintragung vom 01.03.2006 nennt bereits
 Weststrasse 117/119 (in der Inventur ergänzt). Nicht ausführbar in der Codex-Sandbox: `next build`, `tsx`-Skripte.
+
+**Runde 3 – Google-Rezensionen/Öffnungszeiten (9 Punkte: 2 Muss, 5 Sollte, 1 Kann, 1 Bestätigung):** Codex verifizierte Schema/Adapter/
+Seed/Typen als konsistent, Barrierefreiheit und Kontrast der neuen Bewertungskarten als in Ordnung, und dass JSON-LD weiterhin ohne
+`aggregateRating`/`review` bleibt. Umgesetzt (7): `openingHoursSpecification` liefert jetzt echtes `dayOfWeek`/`opens`/`closes` statt nur
+Freitext (`Oeffnungszeit` um optionale `wochentag`/`von`/`bis`/`geschlossen` erweitert, Sanity-Schema entsprechend, geschlossene Tage
+ausgelassen); `inhalt-pruefen` prüft jetzt fehlende Bewertungs-IDs, verlangt Ganzzahlen bei Sternen/Reihenfolge (vorher hätte `4.5` fünf
+volle Sterne ergeben) und validiert die Öffnungszeiten-Einträge; die «vor 3 Monaten»-Angaben altern sichtbar mit unbestätigten Google-Werten
+mit – Einleitung nennt jetzt Abrufdatum (15.09.2026) und Auswahlgrösse («4 von 16»); irreführender Code-Kommentar in `lib/seo.ts` («keine
+Öffnungszeiten») korrigiert. Nicht übernommen (1, bewusst): abweichende Schriftgrösse `text-[0.97rem]` in `components/Bewertungen.tsx` –
+dasselbe Muster wird bereits in `AnfrageAssistent.tsx` und `Auftragsblatt.tsx` verwendet, eine Änderung hätte Inkonsistenz erzeugt.
+Verbleibend (1, dokumentiert statt behoben): die vier Zitate sind gegen die eigenen Scrape-Rohdaten geprüft (siehe unten), aber ohne
+unabhängigen Drittbeleg – Codex empfiehlt, einen datierten Beleg ausserhalb der Website aufzubewahren.
+
+**Eigene Prüfung der Zitate/Zeiten:** Alle 4 Bewertungstexte und alle 7 Öffnungszeiten-Einträge wurden nach dem Schreiben programmatisch
+(Python-Diff) gegen die beim Scrapen notierten Rohwerte verglichen – exakte Übereinstimmung, keine Abweichung.
 
 ## Offen
 

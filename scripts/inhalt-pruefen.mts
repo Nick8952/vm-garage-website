@@ -11,7 +11,7 @@ const DATA = path.resolve(process.cwd(), "data");
 const json = async <T,>(p: string): Promise<T> => JSON.parse(await readFile(path.join(DATA, p), "utf8")) as T;
 const fehler: string[] = [];
 const bilder = await json<Record<string, unknown>>("bilder.json");
-const BAUSTEINE = new Set(["textBaustein", "leistungenBaustein", "faktenBaustein", "spaltenBaustein", "bildBaustein", "kontaktBaustein", "aufrufBaustein", "rechtstextBaustein"]);
+const BAUSTEINE = new Set(["textBaustein", "leistungenBaustein", "faktenBaustein", "bewertungenBaustein", "spaltenBaustein", "bildBaustein", "kontaktBaustein", "aufrufBaustein", "rechtstextBaustein"]);
 const GRUPPEN = new Set(["werkstatt", "carrosserie", "handel"]);
 // Gleiche Regel wie lib/assets.ts#istErlaubtesLinkziel
 const linkErlaubt = (z: string) => /^\/(?!\/)/.test(z) || /^(https?:\/\/[^\s]+|mailto:[^\s]+|tel:\+?[\d\s()-]+)$/.test(z);
@@ -30,6 +30,18 @@ for (const l of leistungen) {
   if (!GRUPPEN.has(l.gruppe)) fehler.push(`Leistung ${l.id}: unbekannte Gruppe «${l.gruppe}»`);
   if (!l.titel || !l.kurz) fehler.push(`Leistung ${l.id}: Titel/Kurztext fehlt`);
   if (typeof l.reihenfolge !== "number") fehler.push(`Leistung ${l.id}: Reihenfolge fehlt`);
+}
+
+const bewertungen = await json<{ id: string; autor: string; sterne: number; text: string; quelle: string; reihenfolge: number }[]>("bewertungen.json");
+const bewertungsIds = new Set<string>();
+for (const b of bewertungen) {
+  const kennung = b.id || "(ohne ID)";
+  if (!b.id) fehler.push(`Bewertung ohne ID: ${JSON.stringify(b.autor ?? "?")}`);
+  else if (bewertungsIds.has(b.id)) fehler.push(`Bewertung ${b.id}: doppelte ID`);
+  if (b.id) bewertungsIds.add(b.id);
+  if (!b.autor || !b.text || !b.quelle) fehler.push(`Bewertung ${kennung}: Autor/Text/Quelle fehlt`);
+  if (!Number.isInteger(b.sterne) || b.sterne < 1 || b.sterne > 5) fehler.push(`Bewertung ${kennung}: Sterne müssen eine Ganzzahl 1–5 sein`);
+  if (!Number.isInteger(b.reihenfolge)) fehler.push(`Bewertung ${kennung}: Reihenfolge fehlt oder keine Ganzzahl`);
 }
 
 const seiten = (await readdir(path.join(DATA, "seiten"))).filter((f) => f.endsWith(".json"));
@@ -90,6 +102,7 @@ for (const f of seiten) {
       }
     }
     if (b._type === "leistungenBaustein") for (const id of (b.leistungen as string[]) ?? []) if (!leistungsIds.has(id)) fehler.push(`${ort}: Leistung «${id}» existiert nicht`);
+    if (b._type === "bewertungenBaustein") for (const id of (b.bewertungen as string[]) ?? []) if (!bewertungsIds.has(id)) fehler.push(`${ort}: Bewertung «${id}» existiert nicht`);
     if (b._type === "faktenBaustein" && !((b.fakten as unknown[])?.length)) fehler.push(`${ort}: keine Fakten`);
     for (const k of ["knopf", "zweiterKnopf", "weiterLink"]) linkSammeln((b[k] as { ziel?: string } | undefined)?.ziel, ort);
     if (b._type === "rechtstextBaustein") {
@@ -100,6 +113,18 @@ for (const f of seiten) {
 const e = await json<Record<string, unknown>>("einstellungen.json");
 bildPruefen((e.seo as { bild?: never }).bild, "Einstellungen SEO-Bild");
 for (const k of ["firmenname", "kurzname", "telefon"]) if (!e[k]) fehler.push(`Einstellungen: ${k} fehlt`);
+{
+  const ZEIT = /^([01]\d|2[0-3]):[0-5]\d$/;
+  const zk = new Set<string>();
+  for (const z of (e.oeffnungszeiten as { _key?: string; tage?: string; zeiten?: string; wochentag?: string; von?: string; bis?: string; geschlossen?: boolean }[]) ?? []) {
+    if (!z._key || zk.has(z._key)) fehler.push(`Öffnungszeiten: _key fehlt oder doppelt (${z.tage ?? "?"})`);
+    zk.add(z._key ?? "");
+    if (!z.tage || !z.zeiten) fehler.push(`Öffnungszeiten: «tage»/«zeiten» fehlt bei ${z._key ?? "?"}`);
+    if (z.von && !ZEIT.test(z.von)) fehler.push(`Öffnungszeiten ${z._key}: «von» keine gültige Uhrzeit (HH:MM)`);
+    if (z.bis && !ZEIT.test(z.bis)) fehler.push(`Öffnungszeiten ${z._key}: «bis» keine gültige Uhrzeit (HH:MM)`);
+    if (!z.geschlossen && (z.wochentag ? !z.von || !z.bis : z.von || z.bis)) fehler.push(`Öffnungszeiten ${z._key}: «wochentag», «von» und «bis» gehören zusammen (oder «geschlossen» setzen)`);
+  }
+}
 for (const l of [...(e.navigation as { ziel: string }[]), ...(e.rechtslinks as { ziel: string }[])]) linkSammeln(l.ziel, "Einstellungen");
 for (const t of await readdir(path.join(DATA, "rechtstexte"))) richTextLinks((await json<{ inhalt: unknown }>(`rechtstexte/${t}`)).inhalt, `Rechtstext ${t}`);
 
@@ -112,4 +137,4 @@ if (fehler.length) {
   console.error(`✗ ${fehler.length} Problem(e):\n` + fehler.map((f) => `  - ${f}`).join("\n"));
   process.exit(1);
 }
-console.log(`✓ Inhalte in Ordnung: ${seiten.length} Seiten, ${leistungen.length} Leistungen, ${Object.keys(bilder).length} Bild(er), ${interneLinks.length} interne Links geprüft.`);
+console.log(`✓ Inhalte in Ordnung: ${seiten.length} Seiten, ${leistungen.length} Leistungen, ${bewertungen.length} Bewertungen, ${Object.keys(bilder).length} Bild(er), ${interneLinks.length} interne Links geprüft.`);

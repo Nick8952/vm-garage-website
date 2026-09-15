@@ -1,0 +1,42 @@
+[
+  {
+    "id": "bewertung-wismer",
+    "autor": "Carlo Wismer",
+    "sterne": 5,
+    "text": "Ich bin seit einigen Jahren Kunde bei der V&M Garage und habe bisher durchwegs sehr positive Erfahrungen gemacht. Die Arbeiten werden von Eigentümer Mauri stets gewissenhaft und professionell ausgeführt, und man hat jederzeit das Gefühl, ehrlich und transparent beraten zu werden. Besonders schätze ich den freundlichen Umgang, die Zuverlässigkeit sowie die fairen Preise. Man merkt, dass hier mit Erfahrung und Sorgfalt gearbeitet wird. Für mich eine Garage, die ich mit bestem Gewissen weiterempfehlen kann.",
+    "datum": "vor 3 Monaten",
+    "quelle": "Google-Rezension",
+    "quellUrl": "https://www.google.com/maps/search/?api=1&query=V+%26+M+Garage+GmbH+Weststrasse+117+8003+Z%C3%BCrich",
+    "reihenfolge": 10
+  },
+  {
+    "id": "bewertung-huynh",
+    "autor": "Chutu Lukas Huynh",
+    "sterne": 5,
+    "text": "Ich bin seit über 10 Jahren Kunde bei der V&M Garage und kann nur Positives berichten. Die Arbeiten werden stets gewissenhaft ausgeführt und die Preise sind fair. Sehr empfehlenswert!",
+    "datum": "vor 6 Monaten",
+    "quelle": "Google-Rezension",
+    "quellUrl": "https://www.google.com/maps/search/?api=1&query=V+%26+M+Garage+GmbH+Weststrasse+117+8003+Z%C3%BCrich",
+    "reihenfolge": 20
+  },
+  {
+    "id": "bewertung-gutmann",
+    "autor": "Moishy Gutmann",
+    "sterne": 5,
+    "text": "Bringe mein Auto für alles dorthin, Service, MFK, neue Pneus usw. unglaublich freundliche und professionell, top organisierter Laden von A-Z. Sie hören genau zu. Zudem wird alles pünktlich und qualitativ hochwertig geliefert, Preise voll in Ordnung. Danke Euch! Macht weiter so",
+    "datum": "vor 4 Jahren",
+    "quelle": "Google-Rezension",
+    "quellUrl": "https://www.google.com/maps/search/?api=1&query=V+%26+M+Garage+GmbH+Weststrasse+117+8003+Z%C3%BCrich",
+    "reihenfolge": 30
+  },
+  {
+    "id": "bewertung-schneider",
+    "autor": "Marco Schneider",
+    "sterne": 5,
+    "text": "Bin seit über 20 Jahre Kunde und immer zufrieden. Freundlich und die Arbeiten wurden immer sauber durchgeführt. Grössere Reperaturen wurden vor der Ausführung immer telefonisch abgesprochen, womit es keine Überraschungen bei der Rechnung gab.",
+    "datum": "vor 5 Jahren",
+    "quelle": "Google-Rezension",
+    "quellUrl": "https://www.google.com/maps/search/?api=1&query=V+%26+M+Garage+GmbH+Weststrasse+117+8003+Z%C3%BCrich",
+    "reihenfolge": 40
+  }
+]

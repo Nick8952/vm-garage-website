@@ -39,11 +39,39 @@ export interface Adresse {
   land?: string;
 }
 
-/** Ein Eintrag der Öffnungszeiten – bleibt in der Demo leer, weil keine aktuellen Zeiten belegt sind. */
+export type Wochentag = "Montag" | "Dienstag" | "Mittwoch" | "Donnerstag" | "Freitag" | "Samstag" | "Sonntag";
+
+/**
+ * Ein Eintrag der Öffnungszeiten. `tage`/`zeiten` sind der sichtbare Text (frei formulierbar,
+ * z. B. «Montag – Freitag»). `wochentag`/`von`/`bis`/`geschlossen` sind optional und speisen
+ * ausschliesslich die strukturierten Daten (JSON-LD `OpeningHoursSpecification`); ohne sie taucht
+ * der Eintrag in den Besuchsdaten der Website auf, aber nicht in den strukturierten Daten.
+ */
 export interface Oeffnungszeit {
   _key: string;
   tage: string;
   zeiten: string;
+  /** Einzelner Wochentag für JSON-LD (bei «Montag – Freitag» leer lassen – dafür sind Einzeltage nötig) */
+  wochentag?: Wochentag;
+  /** Öffnet um (HH:MM) – nur zusammen mit `bis` und `wochentag` wirksam */
+  von?: string;
+  /** Schliesst um (HH:MM) */
+  bis?: string;
+  /** An diesem Tag geschlossen – erscheint dann nicht in den strukturierten Daten (kein «geöffnet 00:00–00:00») */
+  geschlossen?: boolean;
+}
+
+/** Wörtliches Kundenzitat mit nachvollziehbarer Quelle – wird nie erfunden, nur unverändert übernommen. */
+export interface Bewertung {
+  id: string;
+  autor: string;
+  sterne: number;
+  text: string;
+  /** z. B. «vor 3 Monaten» (Anzeigeformat der Quelle, kein exaktes Datum bekannt) */
+  datum?: string;
+  quelle: string;
+  quellUrl?: string;
+  reihenfolge: number;
 }
 
 export interface Einstellungen {
@@ -61,6 +89,8 @@ export interface Einstellungen {
   uid?: string;
   /** Leer = «Öffnungszeiten bitte telefonisch erfragen» */
   oeffnungszeiten: Oeffnungszeit[];
+  /** Herkunft der Öffnungszeiten, wenn sie nicht vom Unternehmen selbst bestätigt sind (z. B. «laut Google-Eintrag, nicht vom Unternehmen bestätigt») */
+  oeffnungszeitenHinweis?: string;
   /** Externer Routenlink (z. B. Google Maps) – wird nur als Link geöffnet, nie eingebettet. */
   routenlink?: string;
   navigation: Link[];
@@ -129,6 +159,13 @@ export interface FaktenBaustein extends BausteinBasis {
   fakten: { _key: string; bezeichnung: string; wert: string }[];
 }
 
+export interface BewertungenBaustein extends BausteinBasis {
+  _type: "bewertungenBaustein";
+  einleitung?: string;
+  /** Leer = alle Bewertungen in ihrer Reihenfolge */
+  bewertungen: Bewertung[];
+}
+
 export interface SpaltenBaustein extends BausteinBasis {
   _type: "spaltenBaustein";
   spalten: { _key: string; titel: string; inhalt: RichText }[];
@@ -164,6 +201,7 @@ export type Baustein =
   | TextBaustein
   | LeistungenBaustein
   | FaktenBaustein
+  | BewertungenBaustein
   | SpaltenBaustein
   | BildBaustein
   | KontaktBaustein
@@ -174,6 +212,7 @@ export const BAUSTEIN_TYPEN: Baustein["_type"][] = [
   "textBaustein",
   "leistungenBaustein",
   "faktenBaustein",
+  "bewertungenBaustein",
   "spaltenBaustein",
   "bildBaustein",
   "kontaktBaustein",
@@ -210,5 +249,6 @@ export interface Inhaltsquelle {
   getSeite(slug: string): Promise<Seite | null>;
   getAlleSeitenSlugs(): Promise<string[]>;
   getLeistungen(): Promise<Leistung[]>;
+  getBewertungen(): Promise<Bewertung[]>;
   getRechtstext(art: Rechtstext["art"]): Promise<Rechtstext | null>;
 }

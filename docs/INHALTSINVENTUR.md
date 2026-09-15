@@ -1,6 +1,6 @@
 # Inhaltsinventur – V & M Garage GmbH
 
-Stand der Recherche: 15.09.2026. Ausgangspunkt waren ausschliesslich Firmenname und Adresse (Weststrasse 117, 8003 Zürich).
+Stand der Recherche: 15.09.2026 (2. Runde: Google-Maps-Eintrag ergänzt). Ausgangspunkt waren ausschliesslich Firmenname und Adresse (Weststrasse 117, 8003 Zürich).
 
 ## Quellenlage
 
@@ -10,7 +10,7 @@ Stand der Recherche: 15.09.2026. Ausgangspunkt waren ausschliesslich Firmenname 
 | **Alter Webauftritt vm-garage.ch** (Bluewin-Baukasten, Inhalte 2007–2013; Wayback-Kopie vom 22.02.2015; ab 2016 nur noch «Site under construction», heute ohne DNS-Eintrag) | Leistungsliste, Firmentext, Telefon, Fax, E-Mail, Öffnungszeiten, ein Fassadenfoto | Firmenquelle, aber **13 Jahre alt** – nur teilweise übernommen |
 | **local.ch / search.ch / garage-vergleich.ch** | Name «V + M Garage GmbH», Weststrasse 119, Telefon 044 450 43 73, keine Öffnungszeiten, keine Bewertungen; Firmentext ist eine Kopie der alten Website (local.ch: «KI-generiert, nicht vom Inhaber bestätigt») | Telefon bestätigt; Rest abgeleitet |
 | **vmgarage.ch** (business-monitor.ch nennt diese Domain als Website) | gehört einer **anderen Firma** (Vintage Motors Garage, Seigneux VD) | **nicht verwendet** – Fehlzuordnung im Verzeichnis |
-| Google Business Profile | nicht überprüfbar (kein Zugang aus der Recherche) | offen |
+| **Google-Maps-Eintrag** «V & M Garage GmbH», Weststrasse 117 (per Chrome/Puppeteer abgerufen, 15.09.2026, ohne Google-Login) | 16 Bewertungen (Ø 5,0), Öffnungszeiten Mo–Fr, «Geschlossen» Sa/So, ein Nutzerfoto (Werkstattinnenraum, 360°-Aufnahme «360 team», Dez. 2020 – keine Nutzungsrechte für diese Demo geklärt, daher nicht verwendet) | öffentliches Profil, **nicht vom Unternehmen als Inhaber verifiziert** (kein «Inhaber»-Badge sichtbar) – als Zitat mit Quellenangabe übernommen, nicht als geprüfte Fakten |
 
 ## Übernommene Inhalte
 
@@ -27,21 +27,24 @@ Stand der Recherche: 15.09.2026. Ausgangspunkt waren ausschliesslich Firmenname 
 | Firmentext «Kundenorientiertes Verhalten steht im Zentrum unserer Tätigkeit. Freundlichkeit und Aufmerksamkeit gehören zu den Grundsätzen unserer Kundenbetreuung.» | alte Website | Hero, Über uns | wörtlich/leicht angepasst übernommen |
 | «Wir freuen uns, dass Sie uns besuchen.» | alte Website | Über uns | sinngemäss übernommen |
 | Fassadenfoto (400 × 300, rotes Schriftband) | alte Website via Wayback (Freigabe Nick 15.09.2026) | Über uns | übernommen, als «Archivbild 2013» gekennzeichnet; Herkunft: assets/originale/HERKUNFT.md |
+| **Öffnungszeiten** Mo 08.00–17.30, Di 07.30–17.30, Mi 07.30–17.30, Do 08.00–17.30, Fr 07.30–17.30, Sa/So geschlossen | Google-Maps-Eintrag (15.09.2026) | Kontakt, JSON-LD | übernommen **mit sichtbarem Hinweis** «Laut öffentlichem Google-Eintrag, nicht vom Unternehmen bestätigt»; ersetzt die vorher fehlenden Zeiten |
+| **4 wörtliche Kundenbewertungen** (Carlo Wismer, Chutu Lukas Huynh, Moishy Gutmann, Marco Schneider – alle 5 Sterne, von 16 Bewertungen insgesamt) | Google-Maps-Eintrag (15.09.2026), unverändert übernommen | Über uns (eigener Abschnitt) | übernommen, wörtlich, mit Name + «Google-Rezension» + Datum-Anzeige der Quelle + Link zum Profil; **keine** `aggregateRating`/`review` im JSON-LD (Zitate bleiben sichtbarer Text, kein behauptetes Rating) |
 
 ## Bewusst NICHT übernommen (nur 2013 belegt oder unbelegt)
 
 | Inhalt | Grund | Folge in der Demo |
 |---|---|---|
-| Öffnungszeiten Mo–Fr 07:30–12:00 / 13:00–17:30, Sa nach Vereinbarung (alte Website) | 13 Jahre alt, in keinem aktuellen Verzeichnis bestätigt | Kontaktseite: «Öffnungszeiten und Termine bitte telefonisch erfragen»; Feld in Einstellungen leer |
+| Öffnungszeiten Mo–Fr 07:30–12:00 / 13:00–17:30, Sa nach Vereinbarung (alte Website, 2013) | 13 Jahre alt, widerspricht dem aktuelleren Google-Eintrag (andere Tageszeiten, keine Mittagspause, andere Wochentage) | **ersetzt** durch die Google-Zeiten (oben), mit Herkunftshinweis statt stillschweigend übernommen |
 | E-Mail info@vm-garage.ch | Domain hat heute weder A- noch MX-Eintrag → Adresse sehr wahrscheinlich tot | keine E-Mail; Anfrage-Assistent im Kopier-Modus (schaltet automatisch auf «E-Mail vorbereiten», sobald `email` gesetzt ist) |
 | Fax 044 450 43 74 | nur 2013 belegt | weggelassen |
 | Website-Angabe «www.vmgarage.ch» (business-monitor.ch) | andere Firma | weggelassen, dokumentiert |
-| Bewertungen / Sterne | nirgends vorhanden (local.ch, search.ch, garage-vergleich.ch: 0 Bewertungen) | keine Bewertungen, kein Rating in JSON-LD |
+| Weitere 12 Google-Bewertungen, das Google-Nutzerfoto, Gesamt-Sternedurchschnitt (5,0) als Zahl/Badge | nur 4 vollständig gelesen/kopierbar dargestellt (Ladegrenze der Erfassung); Nutzerfoto ohne geklärte Rechte; ein aggregiertes Rating wäre eine zusätzliche, nicht direkt zitierte Behauptung | nur 4 Zitate übernommen, kein Foto, kein Rating-Badge/`aggregateRating` |
 | Preise, Markenpartnerschaften, Zertifikate, Team, Elektrofahrzeuge, Abschleppdienst, Terminbuchung | nicht belegt | nicht behauptet |
 | Logo | existiert nicht (nur Baukasten-Grafiken) | typografische Wortmarke |
 
 ## Widersprüche und offene Punkte
 
+0. **Öffnungszeiten-Widerspruch**: alte Website (2013) nennt Mo–Fr 07:30–12:00/13:00–17:30 + Sa nach Vereinbarung; der aktuellere Google-Eintrag (2026) nennt durchgehende Zeiten ohne Mittagspause, unterschiedlich nach Wochentag, und Sa/So geschlossen (keine «nach Vereinbarung»-Option mehr). Die Demo zeigt die Google-Version mit Herkunftshinweis – **vom Kunden zu bestätigen**, da das Google-Profil nicht als vom Unternehmen verwaltet erkennbar war.
 1. **Hausnummer**: Aufgabe/Vorgabe «Weststrasse 117», Handelsregister und alte Website «117/119», local.ch/search.ch «119». Demo zeigt die Registerform 117/119; Routenlink auf 117. → Kunde fragen, welche Nummer am Eingang steht.
 2. **Vito Dimattia** ist seit 28.11.2019 ausgeschieden und führt laut Registerspiegel eine eigene Firma («Garage Dimattia Vito») an derselben Adresse. Verzeichnisse nennen ihn weiterhin als Inhaber (Kopie des alten Textes). Demo: nur als Mitgründer, Geschäftsführung = Figura.
 3. **Firmenschreibweise**: Register «V & M», Verzeichnisse «V + M». Demo folgt dem Register.

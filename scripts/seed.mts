@@ -75,6 +75,7 @@ async function bausteinUmwandeln(b: Record<string, unknown>) {
   if (b._type === "spaltenBaustein") kopie.spalten = ((b.spalten as Record<string, unknown>[]) ?? []).map((sp) => ({ _type: "spalte", ...sp }));
   if (b._type === "faktenBaustein") kopie.fakten = ((b.fakten as Record<string, unknown>[]) ?? []).map((f) => ({ _type: "faktum", ...f }));
   if (b._type === "leistungenBaustein") kopie.leistungen = ((b.leistungen as string[] | undefined) ?? []).map((id) => ref(id, id));
+  if (b._type === "bewertungenBaustein") kopie.bewertungen = ((b.bewertungen as string[] | undefined) ?? []).map((id) => ref(id, id));
   if (b._type === "bildBaustein") kopie.bild = await bild(b.bild as BildRef);
   if (b._type === "rechtstextBaustein") kopie.rechtstext = ref(`rechtstext-${b.rechtstext as string}`);
   return kopie;
@@ -98,6 +99,10 @@ dokumente.push({
 // Leistungen
 for (const l of await json<Record<string, unknown>[]>("leistungen.json")) {
   dokumente.push({ ...l, _id: l.id as string, _type: "leistung", id: undefined });
+}
+// Bewertungen
+for (const b of await json<Record<string, unknown>[]>("bewertungen.json")) {
+  dokumente.push({ ...b, _id: b.id as string, _type: "bewertung", id: undefined });
 }
 // Rechtstexte
 for (const datei of await readdir(path.join(WURZEL, "data/rechtstexte"))) {

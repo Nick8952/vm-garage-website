@@ -1,0 +1,368 @@
+{
+  "id": "rechtstext-datenschutz",
+  "art": "datenschutz",
+  "titel": "Datenschutzerklärung",
+  "stand": "2026-09-15",
+  "inhalt": [
+    {
+      "_type": "block",
+      "_key": "dbfaa73dbe6f",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "2f56661c31ce",
+          "text": "Diese Datenschutzerklärung beschreibt, welche Daten beim Besuch dieser ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "4bd213e93a51",
+          "text": "Demo-Website",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "_key": "de583218c6ca",
+          "text": " verarbeitet werden. Die Website ist eine Gestaltungs-Demo und wird nicht von der V & M Garage GmbH betrieben. Massgebend ist das Schweizer Datenschutzgesetz (DSG); soweit Personen im Europäischen Wirtschaftsraum betroffen sind, gilt ergänzend die Datenschutz-Grundverordnung (DSGVO).",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "378098f96b74",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "207b5e5a4c4f",
+          "text": "Verantwortliche Stelle",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "324d328d38dd",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "a43fdc60ecc5",
+          "text": "Nick Holzbecher\nE-Mail: ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "4c7bf921791f",
+          "text": "holzbechernick@gmail.com",
+          "marks": [
+            "1ec6353e9213"
+          ]
+        }
+      ],
+      "markDefs": [
+        {
+          "_type": "link",
+          "_key": "1ec6353e9213",
+          "href": "mailto:holzbechernick@gmail.com",
+          "extern": false
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "ea14a6bf0ef1",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "b6b12b41f0d1",
+          "text": "Hosting: GitHub Pages",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "e635aee4ddc8",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "1ee4b81dd545",
+          "text": "Diese Website wird als statische Seite über ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "5be1003cd480",
+          "text": "GitHub Pages",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "_key": "f263b2d3abbf",
+          "text": " ausgeliefert, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf einer GitHub-Pages-Seite protokolliert GitHub nach eigenen Angaben die IP-Adresse der besuchenden Person zu Sicherheitszwecken – unabhängig davon, ob sie bei GitHub angemeldet ist. Zusätzlich fallen technisch die üblichen Verbindungsdaten an (Zeitpunkt, aufgerufene Adresse, Browser-Kennung). Diese Daten werden von GitHub verarbeitet, möglicherweise auch in den USA; wir haben darauf keinen Zugriff. Angaben zur Speicherdauer und zu den Garantien für die Übermittlung in Drittstaaten finden Sie in der ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "cf08e90198ee",
+          "text": "Datenschutzerklärung von GitHub",
+          "marks": [
+            "a3d188281796"
+          ]
+        },
+        {
+          "_type": "span",
+          "_key": "707927f2db98",
+          "text": ".",
+          "marks": []
+        }
+      ],
+      "markDefs": [
+        {
+          "_type": "link",
+          "_key": "a3d188281796",
+          "href": "https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement",
+          "extern": true
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "c4edc13ed0da",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "c0058508cf20",
+          "text": "Grundlage dieser Verarbeitung ist unser berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "ea54b24e572a",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "5f5ebe7d0003",
+          "text": "Keine Cookies, kein Tracking",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "849ec82f1116",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "383a2f747047",
+          "text": "Diese Website setzt ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "26b1eec7a085",
+          "text": "keine Cookies",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "_key": "102b288873f9",
+          "text": ", verwendet ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "89d30a7ad44a",
+          "text": "keine Analyse- oder Marketingdienste",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "_key": "f998f55e4442",
+          "text": " und schreibt nichts in den Browser-Speicher (Local Storage, Session Storage). Deshalb gibt es keinen Cookie-Banner, sondern nur die Übersicht «Datenschutz-Einstellungen» am Seitenende, die diesen Zustand beschreibt.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "588350d04c9a",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "e44e76f05fe4",
+          "text": "Schriften werden lokal von dieser Website geladen; es findet kein Abruf bei Google Fonts oder anderen Schriftdiensten statt. Es werden keine Karten, Videos oder anderen Inhalte von Drittanbietern eingebettet.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "7c6b1f96170c",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "27c3756ea482",
+          "text": "Kontaktaufnahme und Anfrage-Assistent",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "f7c99d1b68da",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "9190c25414eb",
+          "text": "Der Anfrage-Assistent auf der Kontaktseite läuft vollständig in Ihrem Browser. Was Sie eintragen, wird weder an uns noch an Dritte übermittelt und nicht gespeichert; beim Verlassen der Seite sind die Eingaben weg. Mit «Text kopieren» legen Sie den vorbereiteten Text in die Zwischenablage Ihres Geräts. Ist eine E-Mail-Adresse des Unternehmens hinterlegt, öffnet «E-Mail vorbereiten» Ihr eigenes E-Mail-Programm mit einem vorbefüllten Entwurf; versendet wird erst, wenn Sie dies dort selbst auslösen.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "25bcdceef9be",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "ba1d8dea5a4b",
+          "text": "Wenn Sie telefonisch Kontakt aufnehmen, verarbeitet das Unternehmen Ihre Angaben zur Bearbeitung Ihres Anliegens. Schreiben Sie der Betreiberin der Demo per E-Mail, werden Ihre Angaben nur zur Beantwortung Ihrer Nachricht verwendet.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "160d01240412",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "bfab15681d69",
+          "text": "Externe Links",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "6be0b198041f",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "6a72a5413cd4",
+          "text": "Über «Route planen» gelangen Sie zu Google Maps (Google Ireland Limited bzw. Google LLC). Erst mit dem Klick auf diesen Link verlassen Sie diese Website; ab dann gilt die Datenschutzerklärung des jeweiligen Anbieters. Telefonlinks öffnen die Telefon-App Ihres Geräts.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "419032ab672b",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "5831eaf3803b",
+          "text": "Ihre Rechte",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "10bee574dae1",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "c9237ab0588e",
+          "text": "Sie haben das Recht auf Auskunft über die Sie betreffenden Personendaten, auf Berichtigung, Löschung oder Einschränkung der Bearbeitung sowie – soweit die DSGVO anwendbar ist – auf Datenübertragbarkeit und auf Widerspruch. Wenden Sie sich dazu an die oben genannte verantwortliche Stelle. Sie können sich zudem an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) oder an eine Datenschutz-Aufsichtsbehörde in Ihrem Wohnsitzstaat wenden.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "ec3bdef39652",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "d96adbaf293a",
+          "text": "Änderungen",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "3aa13ea4a0b4",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "be4418894ed5",
+          "text": "Wird diese Website später mit weiteren Diensten betrieben (zum Beispiel einem Redaktionssystem oder einem anderen Hosting), wird diese Erklärung angepasst. Es gilt jeweils die hier veröffentlichte Fassung.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "269378a4bc2c",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "8c3ac5026b39",
+          "text": "Hinweis: Dieser Text wurde für die Demo erstellt und ist nicht anwaltlich geprüft.",
+          "marks": [
+            "em"
+          ]
+        }
+      ],
+      "markDefs": []
+    }
+  ]
+}

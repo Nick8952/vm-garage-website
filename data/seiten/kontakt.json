@@ -1,0 +1,19 @@
+{
+  "id": "seite-kontakt",
+  "slug": "kontakt",
+  "titel": "Kontakt",
+  "einleitung": "Sie erreichen uns telefonisch oder direkt in der Werkstatt an der Weststrasse 117/119 in Zürich.",
+  "seoTitel": "Kontakt – Weststrasse 117/119, 8003 Zürich",
+  "seoBeschreibung": "Kontakt zur V & M Garage GmbH: Weststrasse 117/119, 8003 Zürich, Telefon 044 450 43 73. Route planen oder Anfrage vorbereiten.",
+  "bausteine": [
+    {
+      "_type": "kontaktBaustein",
+      "_key": "kontakt-haupt",
+      "kurzzeile": "Werkstatt",
+      "titel": "So erreichen Sie uns",
+      "einleitung": "Am schnellsten geht es telefonisch. Wer möchte, stellt die Anfrage vorher hier zusammen.",
+      "mitFormular": true,
+      "formularHinweis": "Der Assistent bereitet nur einen Text vor. Es wird nichts automatisch versendet und nichts gespeichert."
+    }
+  ]
+}

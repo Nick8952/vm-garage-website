@@ -1,0 +1,14 @@
+{
+  "fassade-weststrasse": {
+    "id": "fassade-weststrasse",
+    "original": "assets/originale/fassade-weststrasse-2013.jpg",
+    "breite": 400,
+    "hoehe": 300,
+    "quellen": [
+      {
+        "breite": 400,
+        "url": "/images/fassade-weststrasse-400-2a4a9536.webp"
+      }
+    ]
+  }
+}

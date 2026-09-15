@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Designsystem «Schriftband» – V & M Garage GmbH, Zürich
+   Ausgangspunkt ist das einzige echte Markenzeichen des Betriebs: das rote
+   Schriftband mit weisser Schrift über den Werkstattfenstern an der Weststrasse.
+   Marke: Signalrot. Grund: Beton (warmes Hellgrau) und Weiss. Text: Tinte / Stahl.
+   Schrift: Familjen Grotesk (Band, Titel) · Karla (Lesetext) · JetBrains Mono (Auftragsblatt, Etiketten).
+   ------------------------------------------------------------------ */
+@theme static {
+  --color-rot: #c4301f;
+  --color-rot-dunkel: #9a2416;
+  --color-rot-hell: #fbeae7;
+  --color-tinte: #17191b;
+  --color-stahl: #5b5f65; /* ≥ 4.5:1 auf Beton und Weiss */
+  --color-weiss: #ffffff;
+  --color-beton: #e9e6e0;
+  --color-beton-hell: #f4f2ee;
+  --color-linie: #cfcac1;
+  --color-rahmen: #7d7f84; /* Formularränder: ≥ 3:1 auf Weiss */
+  --color-fokus: #0f4fd1;
+
+  --font-sans: "Karla", "Karla Fallback", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display: "Familjen Grotesk", "Familjen Fallback", "Arial Narrow", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-band: clamp(2.25rem, 1rem + 5.2vw, 5.5rem);
+  --text-display-lg: clamp(2rem, 1.3rem + 2.4vw, 3.5rem);
+  --text-display-md: clamp(1.5rem, 1.15rem + 1.3vw, 2.25rem);
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+
+  --spacing-abschnitt: clamp(4rem, 2.5rem + 5vw, 7.5rem);
+  --spacing-rand: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --container-seite: 74rem;
+
+  --ease-aus: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("./fonts/FamiljenGrotesk-Variable.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Karla";
+  src: url("./fonts/Karla-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Karla";
+  src: url("./fonts/Karla-Italic-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-Variable.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+/* Metrisch angenäherte Ersatzschriften, bis die Webfonts da sind (weniger Layoutsprung) */
+@font-face {
+  font-family: "Karla Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica");
+  size-adjust: 97%;
+  ascent-override: 92%;
+  descent-override: 24%;
+}
+@font-face {
+  font-family: "Familjen Fallback";
+  src: local("Arial Narrow"), local("Arial"), local("Helvetica");
+  size-adjust: 94%;
+  ascent-override: 90%;
+  descent-override: 22%;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-beton text-tinte font-sans antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+  ::selection {
+    background: var(--color-rot);
+    color: var(--color-weiss);
+  }
+  /* Sichtbarer Fokus überall – auf Rot in Weiss, sonst Blau */
+  :focus-visible {
+    outline: 3px solid var(--color-fokus);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .auf-rot :focus-visible,
+  .auf-rot:focus-visible {
+    outline-color: var(--color-weiss);
+  }
+  h1, h2, h3 {
+    @apply font-display;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  strong { font-weight: 700; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
+
+@utility container-seite {
+  width: 100%;
+  max-width: var(--container-seite);
+  margin-inline: auto;
+  padding-inline: var(--spacing-rand);
+}
+
+/* Etikett: kleine versale Monozeile über Titeln (Auftragsblatt-Sprache) */
+@utility etikett {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-stahl);
+}
+
+/* Schriftband: der volle rote Balken – Signatur der Website. Nur Hero + Footer + Aufruf. */
+@utility schriftband {
+  background: var(--color-rot);
+  color: var(--color-weiss);
+  box-shadow: inset 0 -4px 0 0 rgb(0 0 0 / 0.18);
+}
+@utility band-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Knöpfe (Touch-Ziele ≥ 44 px) */
+@utility knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.4rem;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 180ms var(--ease-aus), color 180ms var(--ease-aus), border-color 180ms var(--ease-aus), transform 180ms var(--ease-aus);
+  text-decoration: none;
+}
+@utility knopf-rot {
+  background: var(--color-rot);
+  color: var(--color-weiss);
+  border-color: var(--color-rot);
+}
+.knopf-rot:hover { background: var(--color-rot-dunkel); border-color: var(--color-rot-dunkel); }
+@utility knopf-tinte {
+  background: var(--color-tinte);
+  color: var(--color-weiss);
+  border-color: var(--color-tinte);
+}
+.knopf-tinte:hover { background: #000; }
+@utility knopf-hell {
+  background: transparent;
+  color: var(--color-tinte);
+  border-color: var(--color-tinte);
+}
+.knopf-hell:hover { background: var(--color-tinte); color: var(--color-weiss); }
+@utility knopf-weiss {
+  background: var(--color-weiss);
+  color: var(--color-rot);
+  border-color: var(--color-weiss);
+}
+.knopf-weiss:hover { background: var(--color-beton-hell); }
+@utility knopf-umriss-weiss {
+  background: transparent;
+  color: var(--color-weiss);
+  border-color: rgb(255 255 255 / 0.7);
+}
+.knopf-umriss-weiss:hover { background: rgb(255 255 255 / 0.12); border-color: var(--color-weiss); }
+.knopf:active { transform: translateY(1px); }
+
+/* Fliesstext (Portable Text) */
+.fliesstext { max-width: 42rem; }
+.fliesstext > * + * { margin-top: 1em; }
+.fliesstext h2 { font-size: var(--text-display-md); margin-top: 2em; }
+.fliesstext h3 { font-size: 1.25rem; margin-top: 1.6em; }
+.fliesstext ul, .fliesstext ol { padding-left: 1.4em; }
+.fliesstext ul { list-style: square; }
+.fliesstext ol { list-style: decimal; }
+.fliesstext li + li { margin-top: 0.35em; }
+.fliesstext li::marker { color: var(--color-rot); }
+.fliesstext a { color: var(--color-rot-dunkel); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+.fliesstext a:hover { color: var(--color-rot); }
+.fliesstext em { font-style: italic; color: var(--color-stahl); }
+
+/* Formular */
+.feld {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--color-weiss);
+  color: var(--color-tinte);
+  border: 1.5px solid var(--color-rahmen);
+  border-radius: 4px;
+  font: inherit;
+  line-height: 1.4;
+}
+.feld:focus { border-color: var(--color-tinte); }
+.feld::placeholder { color: #8a8d92; }
+.feld[aria-invalid="true"] { border-color: var(--color-rot); }
+
+/* Auftragsblatt: gelochte Lasche und Linienraster wie ein Werkstatt-Formular */
+.blatt {
+  background: var(--color-weiss);
+  border: 1px solid var(--color-linie);
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgb(23 25 27 / 0.04), 0 12px 32px -20px rgb(23 25 27 / 0.35);
+}
+.blatt-zeile {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr auto;
+  gap: 0.9rem 1rem;
+  align-items: start;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-linie);
+  transition: background-color 160ms var(--ease-aus);
+}
+.blatt-zeile:hover { background: var(--color-beton-hell); }
+.kaestchen {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.2rem;
+  border: 1.5px solid var(--color-tinte);
+  border-radius: 2px;
+  position: relative;
+  flex: none;
+  transition: background-color 160ms var(--ease-aus), border-color 160ms var(--ease-aus);
+}
+.blatt-zeile:hover .kaestchen { border-color: var(--color-rot); }
+.blatt-zeile:hover .kaestchen::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: var(--color-rot);
+  border-radius: 1px;
+}
+
+/* Bewegung: Erscheinen beim Scrollen (nur mit JS-freiem CSS) – aus bei reduzierter Bewegung */
+@keyframes erscheinen {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes band-einfahren {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes auftauchen {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.erscheinen {
+  animation: erscheinen 700ms var(--ease-aus) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 28%;
+}
+.band-einfahren { animation: band-einfahren 900ms var(--ease-aus) both; }
+.auftauchen { animation: auftauchen 600ms var(--ease-aus) both; }
+.auftauchen-2 { animation-delay: 250ms; }
+.auftauchen-3 { animation-delay: 400ms; }
+@media (prefers-reduced-motion: reduce) {
+  .erscheinen, .band-einfahren, .auftauchen { animation: none !important; opacity: 1 !important; clip-path: none !important; transform: none !important; }
+  .knopf, .blatt-zeile, .kaestchen { transition: none; }
+}

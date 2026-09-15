@@ -1,0 +1,58 @@
+// Prüft den fertigen statischen Export (out/) so, wie er auf GitHub Pages liegt:
+//  - jede Seite hat index.html + 404.html vorhanden
+//  - alle internen href/src beginnen mit dem Unterpfad und zeigen auf vorhandene Dateien
+//  - keine externen Ressourcen (Skripte, Stylesheets, Bilder, Schriften) von fremden Hosts
+//  - jede Seite trägt <meta name="robots" content="noindex"> solange INDEXIERUNG nicht gesetzt ist
+// Aufruf: npm run export:pruefen   (nach npm run build:pages)
+import { readdir, readFile, stat } from "node:fs/promises";
+import path from "node:path";
+
+const WURZEL = path.resolve(import.meta.dirname, "..", "out");
+const basePath = (process.env.BASE_PATH ?? "/vm-garage-website").replace(/\/$/, "");
+const indexierung = process.env.INDEXIERUNG === "1";
+const fehler = [];
+
+async function htmlDateien(ordner) {
+  const liste = [];
+  for (const e of await readdir(ordner, { withFileTypes: true })) {
+    const p = path.join(ordner, e.name);
+    if (e.isDirectory()) liste.push(...(await htmlDateien(p)));
+    else if (e.name.endsWith(".html")) liste.push(p);
+  }
+  return liste;
+}
+async function existiert(p) {
+  try { await stat(p); return true; } catch { return false; }
+}
+
+const seiten = await htmlDateien(WURZEL);
+if (!(await existiert(path.join(WURZEL, "404.html")))) fehler.push("out/404.html fehlt");
+let geprueft = 0;
+for (const datei of seiten) {
+  const html = await readFile(datei, "utf8");
+  const rel = path.relative(WURZEL, datei);
+  if (!indexierung && !/<meta name="robots" content="noindex/.test(html)) fehler.push(`${rel}: kein noindex`);
+  // Next setzt selbst <link rel="preconnect" href="/"> (eigener Ursprung) – unproblematisch.
+  const ohnePreconnect = html.replace(/<link rel="preconnect"[^>]*>/g, "");
+  for (const m of ohnePreconnect.matchAll(/(?:href|src|srcset)="([^"]+)"/g)) {
+    for (const rohUrl of m[1].split(",").map((s) => s.trim().split(" ")[0])) {
+      if (!rohUrl || rohUrl.startsWith("#") || /^(mailto:|tel:|data:)/.test(rohUrl)) continue;
+      if (/^https?:\/\//.test(rohUrl)) {
+        // Externe Links (Route planen) sind erlaubt; externe Ressourcen nicht.
+        if (/<(script|link|img)[^>]*(?:src|href)="?${rohUrl}/.test(html) || /\.(js|css|woff2?|png|jpe?g|webp|svg)(\?|$)/.test(rohUrl)) fehler.push(`${rel}: externe Ressource ${rohUrl}`);
+        continue;
+      }
+      const url = rohUrl.split("?")[0].split("#")[0];
+      if (!url.startsWith(basePath + "/") && url !== basePath) { fehler.push(`${rel}: Pfad ohne Unterpfad: ${rohUrl}`); continue; }
+      let ziel = path.join(WURZEL, url.slice(basePath.length));
+      if (url.endsWith("/")) ziel = path.join(ziel, "index.html");
+      if (!(await existiert(ziel)) && !(await existiert(ziel + ".html")) && !(await existiert(ziel + ".txt"))) fehler.push(`${rel}: Ziel fehlt: ${rohUrl}`);
+      geprueft++;
+    }
+  }
+}
+if (fehler.length) {
+  console.error(`✗ ${fehler.length} Problem(e) im Export:\n` + [...new Set(fehler)].map((f) => `  - ${f}`).join("\n"));
+  process.exit(1);
+}
+console.log(`✓ Export in Ordnung: ${seiten.length} HTML-Dateien, ${geprueft} interne Verweise unter ${basePath}, noindex ${indexierung ? "aus (Indexierung erlaubt)" : "auf allen Seiten"}.`);

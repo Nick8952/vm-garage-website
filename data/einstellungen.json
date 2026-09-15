@@ -1,0 +1,46 @@
+{
+  "firmenname": "V & M Garage GmbH",
+  "kurzname": "V & M Garage",
+  "claim": "Werkstatt für alle Marken an der Weststrasse, Zürich",
+  "geschaeftsfuehrung": "Maurizio Matteo Figura",
+  "gegruendet": 2006,
+  "adresse": {
+    "strasse": "Weststrasse 117/119",
+    "plz": "8003",
+    "ort": "Zürich",
+    "land": "Schweiz"
+  },
+  "telefon": "044 450 43 73",
+  "uid": "CHE-112.785.667",
+  "oeffnungszeiten": [],
+  "routenlink": "https://www.google.com/maps/dir/?api=1&destination=Weststrasse+117%2C+8003+Z%C3%BCrich",
+  "navigation": [
+    {
+      "titel": "Leistungen",
+      "ziel": "/leistungen"
+    },
+    {
+      "titel": "Über uns",
+      "ziel": "/ueber-uns"
+    },
+    {
+      "titel": "Kontakt",
+      "ziel": "/kontakt"
+    }
+  ],
+  "rechtslinks": [
+    {
+      "titel": "Impressum",
+      "ziel": "/impressum"
+    },
+    {
+      "titel": "Datenschutz",
+      "ziel": "/datenschutz"
+    }
+  ],
+  "seo": {
+    "titelZusatz": "V & M Garage GmbH, Zürich",
+    "beschreibung": "Unabhängige Garage in Zürich-Wiedikon: Reparatur und Service für alle Marken, Pneuservice, Lenkgeometrie, Abgaswartung, Carrosserie, Ersatzteile und Occasionen. Weststrasse 117/119."
+  },
+  "demoHinweis": "Unverbindliche Gestaltungs-Demo – kein offizieller Auftritt der V & M Garage GmbH."
+}

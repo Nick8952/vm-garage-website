@@ -1,0 +1,146 @@
+{
+  "id": "seite-ueber-uns",
+  "slug": "ueber-uns",
+  "titel": "Über uns",
+  "einleitung": "Die V & M Garage GmbH wurde 2006 gegründet. Kundenorientiertes Verhalten steht im Zentrum unserer Tätigkeit.",
+  "seoTitel": "Über uns – Werkstatt an der Weststrasse seit 2006",
+  "seoBeschreibung": "Die V & M Garage GmbH wurde 2006 an der Weststrasse in Zürich gegründet. Kundenorientiertes Verhalten, Freundlichkeit und Aufmerksamkeit sind die Grundsätze unserer Kundenbetreuung.",
+  "bausteine": [
+    {
+      "_type": "spaltenBaustein",
+      "_key": "ueber-spalten",
+      "kurzzeile": "Betrieb",
+      "titel": "Eine Werkstatt, ein Grundsatz",
+      "spalten": [
+        {
+          "_key": "s1",
+          "titel": "Seit 2006 an der Weststrasse",
+          "inhalt": [
+            {
+              "_type": "block",
+              "_key": "39f6eb2bf3fa",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "089cd41be686",
+                  "text": "Die V & M Garage GmbH wurde 2006 von Vito Dimattia und Maurizio Figura gegründet. Heute führt Maurizio Matteo Figura den Betrieb als Gesellschafter und Geschäftsführer.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "2715a7829f56",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "320ec42cf161",
+                  "text": "Wir arbeiten an Fahrzeugen aller Marken – von der Reparatur über den Service bis zur Carrosserie.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ]
+        },
+        {
+          "_key": "s2",
+          "titel": "Kundenorientiert",
+          "inhalt": [
+            {
+              "_type": "block",
+              "_key": "63a5cf42aaa1",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "5eea07b29edf",
+                  "text": "Kundenorientiertes Verhalten steht im Zentrum unserer Tätigkeit. Freundlichkeit und Aufmerksamkeit gehören zu den Grundsätzen unserer Kundenbetreuung.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            },
+            {
+              "_type": "block",
+              "_key": "dcf526cc38b7",
+              "style": "normal",
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "28bf177b039a",
+                  "text": "Wir freuen uns, dass Sie uns besuchen – am liebsten persönlich an der Weststrasse.",
+                  "marks": []
+                }
+              ],
+              "markDefs": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_type": "bildBaustein",
+      "_key": "ueber-bild",
+      "kurzzeile": "Standort",
+      "titel": "Die Werkstatt an der Weststrasse",
+      "bild": {
+        "bild": "fassade-weststrasse",
+        "alt": "Werkstattfassade der V & M Garage GmbH an der Weststrasse in Zürich mit rotem Schriftband über den Fenstern",
+        "bildunterschrift": "Archivbild der alten Website (2013)"
+      },
+      "text": "Das rote Schriftband über den Werkstattfenstern ist von der Weststrasse aus gut zu sehen."
+    },
+    {
+      "_type": "faktenBaustein",
+      "_key": "ueber-fakten",
+      "kurzzeile": "Firmendaten",
+      "titel": "Auf einen Blick",
+      "fakten": [
+        {
+          "_key": "f1",
+          "bezeichnung": "Firma",
+          "wert": "V & M Garage GmbH"
+        },
+        {
+          "_key": "f2",
+          "bezeichnung": "Gegründet",
+          "wert": "2006"
+        },
+        {
+          "_key": "f3",
+          "bezeichnung": "Geschäftsführung",
+          "wert": "Maurizio Matteo Figura"
+        },
+        {
+          "_key": "f4",
+          "bezeichnung": "Sitz",
+          "wert": "Weststrasse 117/119, 8003 Zürich"
+        },
+        {
+          "_key": "f5",
+          "bezeichnung": "UID",
+          "wert": "CHE-112.785.667"
+        }
+      ]
+    },
+    {
+      "_type": "aufrufBaustein",
+      "_key": "ueber-aufruf",
+      "titel": "Lernen Sie uns kennen.",
+      "text": "Ein Anruf genügt – oder kommen Sie an der Weststrasse vorbei.",
+      "knopf": {
+        "titel": "Anrufen 044 450 43 73",
+        "ziel": "tel:+41444504373"
+      },
+      "zweiterKnopf": {
+        "titel": "Route planen",
+        "ziel": "https://www.google.com/maps/dir/?api=1&destination=Weststrasse+117%2C+8003+Z%C3%BCrich",
+        "extern": true
+      }
+    }
+  ]
+}

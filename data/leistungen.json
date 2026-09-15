@@ -1,0 +1,67 @@
+[
+  {
+    "id": "leistung-reparatur-service",
+    "titel": "Reparatur und Service",
+    "kurz": "Reparatur- und Servicearbeiten an Fahrzeugen aller Marken.",
+    "gruppe": "werkstatt",
+    "reihenfolge": 10,
+    "inhalt": [
+      {
+        "_type": "block",
+        "_key": "dfca907249c5",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "_key": "b5b7601169ed",
+            "text": "Ersatzwagen stehen zur Verfügung.",
+            "marks": []
+          }
+        ],
+        "markDefs": []
+      }
+    ]
+  },
+  {
+    "id": "leistung-pneuservice",
+    "titel": "Pneuservice",
+    "kurz": "Räder und Reifen: Montage und Wechsel.",
+    "gruppe": "werkstatt",
+    "reihenfolge": 20
+  },
+  {
+    "id": "leistung-lenkgeometrie",
+    "titel": "Lenkgeometrie",
+    "kurz": "Vermessen und Einstellen der Achs- und Lenkgeometrie.",
+    "gruppe": "werkstatt",
+    "reihenfolge": 30
+  },
+  {
+    "id": "leistung-abgaswartung",
+    "titel": "Abgaswartung",
+    "kurz": "Abgaswartung mit Prüfung der Abgaswerte.",
+    "gruppe": "werkstatt",
+    "reihenfolge": 40
+  },
+  {
+    "id": "leistung-spengler-lackier",
+    "titel": "Spengler- und Lackierarbeiten",
+    "kurz": "Carrosserie-Instandsetzung: Spenglerei und Lackierung.",
+    "gruppe": "carrosserie",
+    "reihenfolge": 50
+  },
+  {
+    "id": "leistung-ersatzteile",
+    "titel": "Ersatzteile und Zubehör",
+    "kurz": "Verkauf von Ersatzteilen und Zubehör.",
+    "gruppe": "handel",
+    "reihenfolge": 60
+  },
+  {
+    "id": "leistung-occasionen",
+    "titel": "Occasionen",
+    "kurz": "Kauf und Verkauf von Occasionsfahrzeugen.",
+    "gruppe": "handel",
+    "reihenfolge": 70
+  }
+]

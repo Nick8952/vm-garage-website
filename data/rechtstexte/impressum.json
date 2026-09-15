@@ -1,0 +1,234 @@
+{
+  "id": "rechtstext-impressum",
+  "art": "impressum",
+  "titel": "Impressum",
+  "stand": "2026-09-15",
+  "inhalt": [
+    {
+      "_type": "block",
+      "_key": "e60833c90394",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "7d6f0d0e8e5c",
+          "text": "Betreiberin dieser Demo-Website",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "9356fb200525",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "03c3e8ccb4b8",
+          "text": "Nick Holzbecher\nE-Mail: ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "6bc037286a16",
+          "text": "holzbechernick@gmail.com",
+          "marks": [
+            "bb4789f39085"
+          ]
+        }
+      ],
+      "markDefs": [
+        {
+          "_type": "link",
+          "_key": "bb4789f39085",
+          "href": "mailto:holzbechernick@gmail.com",
+          "extern": false
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "4826a645bc8f",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "ee5e3c2de25e",
+          "text": "Diese Website ist eine ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "50c361b54b5e",
+          "text": "unverbindliche Gestaltungs-Demo",
+          "marks": [
+            "strong"
+          ]
+        },
+        {
+          "_type": "span",
+          "_key": "8ed736732ca9",
+          "text": ": ein Vorschlag, wie ein neuer Webauftritt der V & M Garage GmbH aussehen könnte. Sie wurde nicht von der V & M Garage GmbH in Auftrag gegeben, betrieben oder freigegeben und stellt kein Angebot dieses Unternehmens dar. Verantwortlich für Inhalt und Betrieb der Demo ist ausschliesslich die oben genannte Betreiberin.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "4346c1822a88",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "d509ace32f7f",
+          "text": "Dargestelltes Unternehmen",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "73afbff6dac9",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "3610b3893c5e",
+          "text": "V & M Garage GmbH\nWeststrasse 117/119\n8003 Zürich\nTelefon: ",
+          "marks": []
+        },
+        {
+          "_type": "span",
+          "_key": "c950223b0493",
+          "text": "044 450 43 73",
+          "marks": [
+            "2753991f7524"
+          ]
+        }
+      ],
+      "markDefs": [
+        {
+          "_type": "link",
+          "_key": "2753991f7524",
+          "href": "tel:+41444504373",
+          "extern": false
+        }
+      ]
+    },
+    {
+      "_type": "block",
+      "_key": "b92e8423ce97",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "e3b1c0594f6c",
+          "text": "Rechtsform: Gesellschaft mit beschränkter Haftung (GmbH)\nSitz: Zürich, eingetragen im Handelsregister des Kantons Zürich\nUID: CHE-112.785.667\nGeschäftsführung: Maurizio Matteo Figura, Gesellschafter und Geschäftsführer",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "b8dd173eaf17",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "1dbe638728e1",
+          "text": "Die Angaben zum Unternehmen stammen aus dem Handelsregister (Publikationen im Schweizerischen Handelsamtsblatt, letzte berücksichtigte Mutation vom 3. Dezember 2019) und aus dem früheren Webauftritt des Unternehmens. Öffnungszeiten, E-Mail-Adresse und Leistungsumfang sind vor einer Veröffentlichung durch das Unternehmen zu bestätigen.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "5635861f45c5",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "3d995a397e04",
+          "text": "Haftung für Inhalte",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "03c95db19ea9",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "81eb3e86e46f",
+          "text": "Die Inhalte dieser Demo wurden mit Sorgfalt zusammengestellt. Für Richtigkeit, Vollständigkeit und Aktualität wird keine Gewähr übernommen. Verbindliche Auskünfte zu Leistungen, Preisen und Terminen erteilt ausschliesslich die V & M Garage GmbH selbst.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "78a9d3356b40",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "87b7711e1d70",
+          "text": "Haftung für Links",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "fc0383ed10cf",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "71525c02688e",
+          "text": "Diese Website enthält Links zu externen Websites (zum Beispiel zur Routenplanung). Auf deren Inhalte haben wir keinen Einfluss; für sie ist der jeweilige Anbieter verantwortlich.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "a1a79e2b7a9d",
+      "style": "h2",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "387ade8e72f2",
+          "text": "Urheberrechte",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    },
+    {
+      "_type": "block",
+      "_key": "cbb7d2b96f9c",
+      "style": "normal",
+      "children": [
+        {
+          "_type": "span",
+          "_key": "97f79be5fda0",
+          "text": "Gestaltung und Texte dieser Demo: Nick Holzbecher. Das Archivfoto der Werkstattfassade stammt vom früheren Webauftritt der V & M Garage GmbH (2013). Die verwendeten Schriften Familjen Grotesk, Karla und JetBrains Mono stehen unter der SIL Open Font License 1.1.",
+          "marks": []
+        }
+      ],
+      "markDefs": []
+    }
+  ]
+}

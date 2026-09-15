@@ -1,0 +1,15 @@
+{
+  "id": "seite-impressum",
+  "slug": "impressum",
+  "titel": "Impressum",
+  "einleitung": "Angaben zur Betreiberin dieser Demo und zum dargestellten Unternehmen.",
+  "seoTitel": "Impressum",
+  "seoBeschreibung": "Impressum der Demo-Website für die V & M Garage GmbH, Zürich.",
+  "bausteine": [
+    {
+      "_type": "rechtstextBaustein",
+      "_key": "impressum-text",
+      "rechtstext": "impressum"
+    }
+  ]
+}

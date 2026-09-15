@@ -1,0 +1,50 @@
+{
+  "id": "seite-leistungen",
+  "slug": "leistungen",
+  "titel": "Leistungen",
+  "einleitung": "Reparatur- und Servicearbeiten an Fahrzeugen aller Marken sowie der Verkauf von Ersatzteilen und Zubehör gehören zu unserer Kernkompetenz. Dazu kommen Carrosserie, Pneuservice, Lenkgeometrie, Abgaswartung und der Handel mit Occasionen.",
+  "seoTitel": "Leistungen – Reparatur, Service, Carrosserie, Pneuservice",
+  "seoBeschreibung": "Leistungen der V & M Garage GmbH in Zürich: Reparatur und Service für alle Marken, Spengler- und Lackierarbeiten, Pneuservice, Lenkgeometrie, Abgaswartung, Ersatzteile, Occasionen.",
+  "bausteine": [
+    {
+      "_type": "leistungenBaustein",
+      "_key": "leistungen-blatt",
+      "kurzzeile": "Auftragsblatt",
+      "titel": "Unsere Leistungen",
+      "darstellung": "blatt",
+      "leistungen": []
+    },
+    {
+      "_type": "faktenBaustein",
+      "_key": "leistungen-fakten",
+      "kurzzeile": "Gut zu wissen",
+      "titel": "Während der Reparatur",
+      "fakten": [
+        {
+          "_key": "f1",
+          "bezeichnung": "Ersatzwagen",
+          "wert": "Stehen zur Verfügung – bitte bei der Anfrage erwähnen"
+        },
+        {
+          "_key": "f2",
+          "bezeichnung": "Fahrzeuge",
+          "wert": "Alle Marken"
+        }
+      ]
+    },
+    {
+      "_type": "aufrufBaustein",
+      "_key": "leistungen-aufruf",
+      "titel": "Was braucht Ihr Fahrzeug?",
+      "text": "Am Telefon klären wir Umfang und Termin. Sie können Ihre Anfrage vorher online zusammenstellen.",
+      "knopf": {
+        "titel": "Anrufen 044 450 43 73",
+        "ziel": "tel:+41444504373"
+      },
+      "zweiterKnopf": {
+        "titel": "Anfrage vorbereiten",
+        "ziel": "/kontakt"
+      }
+    }
+  ]
+}

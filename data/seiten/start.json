@@ -1,0 +1,79 @@
+{
+  "id": "seite-start",
+  "slug": "start",
+  "titel": "Garage in Zürich-Wiedikon",
+  "seoTitel": "Reparatur und Service für alle Marken",
+  "seoBeschreibung": "V & M Garage GmbH, Weststrasse 117/119, 8003 Zürich: Reparatur und Service für alle Marken, Pneuservice, Lenkgeometrie, Abgaswartung, Carrosserie, Occasionen. Telefon 044 450 43 73.",
+  "hero": {
+    "kurzzeile": "Weststrasse 117/119 · 8003 Zürich · seit 2006",
+    "titel": "Reparatur und Service für alle Marken.",
+    "text": "Die V & M Garage ist eine unabhängige Werkstatt im Zürcher Kreis 3. Freundlichkeit und Aufmerksamkeit gehören zu den Grundsätzen unserer Kundenbetreuung – am Telefon wie in der Werkstatt.",
+    "knopf": {
+      "titel": "Anrufen 044 450 43 73",
+      "ziel": "tel:+41444504373"
+    },
+    "zweiterKnopf": {
+      "titel": "Route planen",
+      "ziel": "https://www.google.com/maps/dir/?api=1&destination=Weststrasse+117%2C+8003+Z%C3%BCrich",
+      "extern": true
+    }
+  },
+  "bausteine": [
+    {
+      "_type": "leistungenBaustein",
+      "_key": "start-leistungen",
+      "kurzzeile": "Auftragsblatt",
+      "titel": "Was wir für Ihr Fahrzeug tun",
+      "einleitung": "Reparatur- und Servicearbeiten an Fahrzeugen aller Marken sowie der Verkauf von Ersatzteilen und Zubehör gehören zu unserer Kernkompetenz.",
+      "darstellung": "kompakt",
+      "leistungen": [],
+      "weiterLink": {
+        "titel": "Alle Leistungen im Detail",
+        "ziel": "/leistungen"
+      }
+    },
+    {
+      "_type": "faktenBaustein",
+      "_key": "start-fakten",
+      "kurzzeile": "Betrieb",
+      "titel": "Kurz und klar",
+      "fakten": [
+        {
+          "_key": "f1",
+          "bezeichnung": "Gegründet",
+          "wert": "2006 in Zürich"
+        },
+        {
+          "_key": "f2",
+          "bezeichnung": "Fahrzeuge",
+          "wert": "Alle Marken"
+        },
+        {
+          "_key": "f3",
+          "bezeichnung": "Ersatzwagen",
+          "wert": "Stehen zur Verfügung"
+        },
+        {
+          "_key": "f4",
+          "bezeichnung": "Standort",
+          "wert": "Weststrasse 117/119, Kreis 3"
+        }
+      ]
+    },
+    {
+      "_type": "aufrufBaustein",
+      "_key": "start-aufruf",
+      "kurzzeile": "Termin",
+      "titel": "Rufen Sie uns an – wir besprechen Ihr Anliegen direkt.",
+      "text": "Öffnungszeiten und freie Termine erfahren Sie telefonisch. Auf Wunsch bereiten Sie Ihre Anfrage online vor und nehmen sie mit ans Telefon.",
+      "knopf": {
+        "titel": "Anrufen 044 450 43 73",
+        "ziel": "tel:+41444504373"
+      },
+      "zweiterKnopf": {
+        "titel": "Anfrage vorbereiten",
+        "ziel": "/kontakt"
+      }
+    }
+  ]
+}

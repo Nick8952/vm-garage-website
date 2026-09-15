@@ -1,0 +1,15 @@
+{
+  "id": "seite-datenschutz",
+  "slug": "datenschutz",
+  "titel": "Datenschutzerklärung",
+  "einleitung": "Welche Daten beim Besuch dieser Demo-Website anfallen – und welche nicht.",
+  "seoTitel": "Datenschutzerklärung",
+  "seoBeschreibung": "Datenschutzerklärung der Demo-Website für die V & M Garage GmbH: Hosting auf GitHub Pages, keine Cookies, kein Tracking.",
+  "bausteine": [
+    {
+      "_type": "rechtstextBaustein",
+      "_key": "datenschutz-text",
+      "rechtstext": "datenschutz"
+    }
+  ]
+}

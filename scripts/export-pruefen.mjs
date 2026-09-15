@@ -25,7 +25,16 @@ async function existiert(p) {
   try { await stat(p); return true; } catch { return false; }
 }
 
-const seiten = await htmlDateien(WURZEL);
+let seiten;
+try {
+  seiten = await htmlDateien(WURZEL);
+} catch {
+  console.error("✗ out/ fehlt – zuerst `npm run build:pages` ausführen.");
+  process.exit(1);
+}
+if (!seiten.length) { console.error("✗ out/ enthält keine HTML-Dateien."); process.exit(1); }
+const erwarteteSeiten = ["index.html", "404.html", "leistungen/index.html", "ueber-uns/index.html", "kontakt/index.html", "impressum/index.html", "datenschutz/index.html"];
+for (const s of erwarteteSeiten) if (!(await existiert(path.join(WURZEL, s)))) fehler.push(`Seite fehlt im Export: ${s}`);
 if (!(await existiert(path.join(WURZEL, "404.html")))) fehler.push("out/404.html fehlt");
 let geprueft = 0;
 for (const datei of seiten) {
@@ -34,14 +43,21 @@ for (const datei of seiten) {
   if (!indexierung && !/<meta name="robots" content="noindex/.test(html)) fehler.push(`${rel}: kein noindex`);
   // Next setzt selbst <link rel="preconnect" href="/"> (eigener Ursprung) – unproblematisch.
   const ohnePreconnect = html.replace(/<link rel="preconnect"[^>]*>/g, "");
+  // Ressourcen-Tags (Skript, Stylesheet, Bild, Schrift, iframe …) dürfen keine fremden Hosts laden; <a href> nach aussen ist erlaubt.
+  for (const tag of ohnePreconnect.matchAll(/<(script|link|img|source|video|audio|iframe|embed|object)\b[^>]*>/g)) {
+    // <link rel="canonical|alternate"> verweist nur, lädt nichts – absolute Site-URL ist dort gewollt.
+    if (tag[1] === "link" && /rel="(canonical|alternate|next|prev)"/.test(tag[0])) continue;
+    for (const attr of tag[0].matchAll(/(?:src|href|srcset|data)="([^"]+)"/g)) {
+      for (const u of attr[1].split(",").map((s) => s.trim().split(" ")[0])) {
+        if (/^(https?:)?\/\//.test(u)) fehler.push(`${rel}: externe Ressource in <${tag[1]}>: ${u}`);
+      }
+    }
+  }
+  for (const imp of ohnePreconnect.matchAll(/@import\s+(?:url\()?["']?((?:https?:)?\/\/[^"')\s]+)/g)) fehler.push(`${rel}: externer CSS-Import ${imp[1]}`);
   for (const m of ohnePreconnect.matchAll(/(?:href|src|srcset)="([^"]+)"/g)) {
     for (const rohUrl of m[1].split(",").map((s) => s.trim().split(" ")[0])) {
       if (!rohUrl || rohUrl.startsWith("#") || /^(mailto:|tel:|data:)/.test(rohUrl)) continue;
-      if (/^https?:\/\//.test(rohUrl)) {
-        // Externe Links (Route planen) sind erlaubt; externe Ressourcen nicht.
-        if (/<(script|link|img)[^>]*(?:src|href)="?${rohUrl}/.test(html) || /\.(js|css|woff2?|png|jpe?g|webp|svg)(\?|$)/.test(rohUrl)) fehler.push(`${rel}: externe Ressource ${rohUrl}`);
-        continue;
-      }
+      if (/^(https?:)?\/\//.test(rohUrl)) continue; // externe Links: oben geprüft, hier nur interne Ziele
       const url = rohUrl.split("?")[0].split("#")[0];
       if (!url.startsWith(basePath + "/") && url !== basePath) { fehler.push(`${rel}: Pfad ohne Unterpfad: ${rohUrl}`); continue; }
       let ziel = path.join(WURZEL, url.slice(basePath.length));

@@ -16,4 +16,6 @@ for (const ordner of ziele) {
   await access(quelle);
   await cp(quelle, ziel, { recursive: true });
 }
+// Nach einem Vercel-Build verweist .next/types noch auf die kopierten Routen und bricht `tsc` – deshalb mit entfernen.
+if (entfernen) for (const t of [".next/types", ".next/dev/types"]) await rm(path.join(wurzel, t), { recursive: true, force: true });
 console.log(entfernen ? "Server-Routen entfernt (statischer Export)." : "Server-Routen nach app/ kopiert (Vercel).");

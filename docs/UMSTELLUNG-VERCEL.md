@@ -33,7 +33,7 @@ Solange diese Punkte offen sind, läuft die Demo unverändert auf GitHub Pages.
 
 ## Datenschutz und Rechtstexte
 
-- [ ] **Impressum**: Demo-Betreiber-Abschnitt entfernen, V & M Garage GmbH als Betreiberin, Angaben vom Kunden bestätigen lassen.
+- [ ] **Impressum**: Demo-Betreiber-Abschnitt entfernen, V & M Garage GmbH als Betreiberin (Unternehmen), Angaben vom Kunden bestätigen lassen.
 - [ ] **Datenschutzerklärung** neu fassen (Rechtstext im Studio): Verantwortliche = V & M Garage GmbH; Hosting **Vercel Inc.** (USA –
       Region/Logs/Übermittlung prüfen); **Sanity** (Content Lake + `cdn.sanity.io`: Browser rufen Bild-URLs direkt ab → IP-Adresse
       an Sanity); Studio-Login/Draft-Mode-Cookies nur für Redaktion; Kontaktweg; Betroffenenrechte; Stand.

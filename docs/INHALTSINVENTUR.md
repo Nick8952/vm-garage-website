@@ -19,7 +19,7 @@ Stand der Recherche: 15.09.2026. Ausgangspunkt waren ausschliesslich Firmenname 
 | Firmenname «V & M Garage GmbH» | Handelsregister | überall | übernommen (Verzeichnisse schreiben teils «V + M») |
 | Adresse Weststrasse 117/119, 8003 Zürich | Handelsregister, alte Website | Kontakt, Footer, Impressum, JSON-LD | übernommen; Routenlink zeigt auf «Weststrasse 117» (Vorgabe) |
 | Telefon 044 450 43 73 | alte Website, local.ch, search.ch | Kopfzeile, Hero, Kontakt, Footer, 404 | übernommen (aktuell in Verzeichnissen) |
-| Gründung 2006; Gründer Vito Dimattia und Maurizio Figura | Handelsregister (Neueintragung 2006), alte Website | Über uns | übernommen, historisch formuliert |
+| Gründung 2006; Gründer Vito Dimattia und Maurizio Figura; **Sitz Weststrasse 117/119 bereits bei der Neueintragung 2006** | Handelsregister (SHAB 01.03.2006), alte Website | Über uns («seit 2006 an der Weststrasse») | übernommen, historisch formuliert |
 | Geschäftsführung Maurizio Matteo Figura (Gesellschafter und Geschäftsführer, Einzelunterschrift) | SHAB 03.12.2019 | Über uns, Impressum, JSON-LD | übernommen |
 | UID CHE-112.785.667, GmbH, Sitz Zürich | Handelsregister | Impressum, Über uns | übernommen |
 | Leistungen: Reparatur/Service aller Marken, Ersatzteile & Zubehör, Spengler- & Lackierarbeiten, Pneuservice, Lenkgeometrie, Abgaswartung, Kauf/Verkauf Occasionen | alte Website (2013), von Verzeichnissen wiederholt | Startseite, Leistungen | übernommen; Kurztexte neu formuliert **ohne Zusatzleistungen** (rein definitorisch) |

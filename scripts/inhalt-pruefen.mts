@@ -13,6 +13,8 @@ const fehler: string[] = [];
 const bilder = await json<Record<string, unknown>>("bilder.json");
 const BAUSTEINE = new Set(["textBaustein", "leistungenBaustein", "faktenBaustein", "spaltenBaustein", "bildBaustein", "kontaktBaustein", "aufrufBaustein", "rechtstextBaustein"]);
 const GRUPPEN = new Set(["werkstatt", "carrosserie", "handel"]);
+// Gleiche Regel wie lib/assets.ts#istErlaubtesLinkziel
+const linkErlaubt = (z: string) => /^\/(?!\/)/.test(z) || /^(https?:\/\/[^\s]+|mailto:[^\s]+|tel:\+?[\d\s()-]+)$/.test(z);
 
 function bildPruefen(ref: { bild?: string; alt?: string } | undefined, ort: string) {
   if (!ref) return;
@@ -34,7 +36,12 @@ const seiten = (await readdir(path.join(DATA, "seiten"))).filter((f) => f.endsWi
 const slugs = new Set<string>();
 const interneLinks: [string, string][] = [];
 const linkSammeln = (ziel: unknown, ort: string) => {
-  if (typeof ziel === "string" && ziel.startsWith("/")) interneLinks.push([ziel.replace(/\/$/, "").split("?")[0] || "/", ort]);
+  if (typeof ziel !== "string") return;
+  if (!linkErlaubt(ziel)) fehler.push(`${ort}: unzulässiges Linkziel «${ziel}»`);
+  if (ziel.startsWith("/")) interneLinks.push([ziel.replace(/\/$/, "").split("?")[0] || "/", ort]);
+};
+const pflicht = (b: Record<string, unknown>, felder: string[], ort: string) => {
+  for (const f of felder) if (b[f] === undefined || b[f] === null || b[f] === "") fehler.push(`${ort}: Pflichtfeld «${f}» fehlt`);
 };
 function richTextLinks(inhalt: unknown, ort: string) {
   for (const block of (inhalt as { markDefs?: { href?: string }[] }[]) ?? []) for (const m of block.markDefs ?? []) linkSammeln(m.href, ort);
@@ -58,7 +65,30 @@ for (const f of seiten) {
     keys.add(b._key as string);
     if ("bild" in b) bildPruefen(b.bild as never, ort);
     if ("inhalt" in b) richTextLinks(b.inhalt, ort);
-    if (b._type === "spaltenBaustein") for (const sp of b.spalten as { inhalt: unknown }[]) richTextLinks(sp.inhalt, ort);
+    if (b._type === "textBaustein") pflicht(b, ["inhalt"], ort);
+    if (b._type === "bildBaustein") pflicht(b, ["bild"], ort);
+    if (b._type === "aufrufBaustein") pflicht(b, ["knopf"], ort);
+    if (b._type === "kontaktBaustein" && typeof b.mitFormular !== "boolean") fehler.push(`${ort}: mitFormular muss true/false sein`);
+    if (b._type === "leistungenBaustein" && !["blatt", "kompakt"].includes(b.darstellung as string)) fehler.push(`${ort}: darstellung muss «blatt» oder «kompakt» sein`);
+    if (b._type === "spaltenBaustein") {
+      const spalten = (b.spalten as { _key?: string; titel?: string; inhalt?: unknown }[] | undefined) ?? [];
+      if (!spalten.length || spalten.length > 3) fehler.push(`${ort}: 1–3 Spalten nötig`);
+      const sk = new Set<string>();
+      for (const sp of spalten) {
+        if (!sp._key || sk.has(sp._key)) fehler.push(`${ort}: Spalten-_key fehlt oder doppelt`);
+        sk.add(sp._key ?? "");
+        if (!sp.titel || !sp.inhalt) fehler.push(`${ort}: Spalte ohne Titel/Inhalt`);
+        richTextLinks(sp.inhalt, ort);
+      }
+    }
+    if (b._type === "faktenBaustein") {
+      const fk = new Set<string>();
+      for (const f of (b.fakten as { _key?: string; bezeichnung?: string; wert?: string }[] | undefined) ?? []) {
+        if (!f._key || fk.has(f._key)) fehler.push(`${ort}: Fakten-_key fehlt oder doppelt`);
+        fk.add(f._key ?? "");
+        if (!f.bezeichnung || !f.wert) fehler.push(`${ort}: Faktum ohne Bezeichnung/Wert`);
+      }
+    }
     if (b._type === "leistungenBaustein") for (const id of (b.leistungen as string[]) ?? []) if (!leistungsIds.has(id)) fehler.push(`${ort}: Leistung «${id}» existiert nicht`);
     if (b._type === "faktenBaustein" && !((b.fakten as unknown[])?.length)) fehler.push(`${ort}: keine Fakten`);
     for (const k of ["knopf", "zweiterKnopf", "weiterLink"]) linkSammeln((b[k] as { ziel?: string } | undefined)?.ziel, ort);

@@ -29,7 +29,13 @@ export const linkTyp = defineType({
       title: "Ziel",
       type: "string",
       description: "Interner Pfad (z. B. /kontakt), externe Adresse (https://…), tel:… oder mailto:…",
-      validation: (r) => r.required(),
+      validation: (r) =>
+        r.required().custom((wert) => {
+          if (typeof wert !== "string") return true;
+          // Gleiche Regel wie lib/assets.ts#istErlaubtesLinkziel
+          const ok = /^\/(?!\/)/.test(wert) || /^(https?:\/\/[^\s]+|mailto:[^\s]+|tel:\+?[\d\s()-]+)$/.test(wert);
+          return ok || "Erlaubt sind interne Pfade (/…), https://…, mailto:… und tel:…";
+        }),
     }),
     defineField({ name: "extern", title: "In neuem Tab öffnen", type: "boolean", initialValue: false }),
   ],

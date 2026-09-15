@@ -1,6 +1,6 @@
 # vm-garage-website – Anweisungen für Claude Code
 
-Verkaufs-Demo für die **V & M Garage GmbH, Weststrasse 117/119, 8003 Zürich** (unabhängige Autowerkstatt – **keine Fahrschule**).
+Verkaufs-Demo für die **V & M Garage GmbH, Weststrasse 117/119, 8003 Zürich** (Autowerkstatt für alle Marken – **keine Fahrschule**).
 Auftraggeber der Demo: Nick Holzbecher. Inhalte ausschliesslich aus Handelsregister und altem Webauftritt (2013), siehe
 `docs/INHALTSINVENTUR.md`. Die Next.js-Agent-Regeln aus `AGENTS.md` gelten zusätzlich:
 
@@ -59,7 +59,7 @@ Für fullPage-Screenshots `prefers-reduced-motion: reduce` emulieren, sonst wirk
 
 - Herkunft: das rote Schriftband mit weisser Schrift über den Werkstattfenstern (einziges echtes Markenzeichen; kein Logo).
 - Farben (`app/globals.css`, `@theme static`): Rot `#c4301f` (Band), Beton `#e9e6e0` / Weiss als Grund, Tinte `#17191b`, Stahl `#5b5f65`,
-  Fokus `#0f4fd1`. Weiss auf Rot 5.5:1, Stahl auf Beton 4.9:1.
+  Fokus `#0f4fd1`. Weiss auf Rot 5.5:1, Stahl auf Beton 5.2:1, Fokus auf Beton 5.5:1.
 - Schriften: Familjen Grotesk (Band, Titel), Karla (Lesetext), JetBrains Mono (Etiketten, Auftragsblatt).
 - Signatur: **das rote Band nur im Hero und im Footer**; der Aufruf-Baustein ist ein Zettel mit rotem Kopfstreifen, nie ein zweites Band.
   Leistungen als **Auftragsblatt** (Kästchen, Linienraster, «Anfragen» → `/kontakt?anliegen=`). Nichts davon in anderen Demos wiederverwenden.

@@ -15,3 +15,16 @@ export function assetUrl(pfad: string): string {
 export function istExternerLink(ziel: string): boolean {
   return /^(https?:|mailto:|tel:)/.test(ziel);
 }
+
+/**
+ * Erlaubte Linkziele (auch aus dem CMS): interner Pfad («/kontakt», nicht «//host»), https://, http://, mailto:, tel:.
+ * Alles andere (javascript:, data:, protokollrelative URLs) wird abgewiesen – dieselbe Regel gilt im Sanity-Schema.
+ */
+export function istErlaubtesLinkziel(ziel: string): boolean {
+  return /^\/(?!\/)/.test(ziel) || /^(https?:\/\/[^\s]+|mailto:[^\s]+|tel:\+?[\d\s()-]+)$/.test(ziel);
+}
+
+/** Liefert das Ziel unverändert oder «#», wenn es nicht erlaubt ist (Schutz vor javascript:-Links aus Inhalten). */
+export function sichererLink(ziel: string): string {
+  return istErlaubtesLinkziel(ziel) ? ziel : "#";
+}

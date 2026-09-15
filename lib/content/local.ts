@@ -30,6 +30,8 @@ async function json<T>(datei: string): Promise<T> {
   const text = await readFile(path.join(DATA, datei), "utf8");
   return JSON.parse(text) as T;
 }
+/** Nur «Datei fehlt» ist ein erwarteter Fall; kaputtes JSON soll den Build laut abbrechen. */
+const fehltNur = (err: unknown) => (err as NodeJS.ErrnoException)?.code === "ENOENT";
 
 let bilderCache: Record<string, BildEintrag> | undefined;
 async function bilder(): Promise<Record<string, BildEintrag>> {
@@ -67,8 +69,9 @@ async function leistungen(): Promise<Leistung[]> {
 async function rechtstext(art: Rechtstext["art"]): Promise<Rechtstext | null> {
   try {
     return await json<Rechtstext>(`rechtstexte/${art}.json`);
-  } catch {
-    return null;
+  } catch (err) {
+    if (fehltNur(err)) return null;
+    throw err;
   }
 }
 
@@ -102,8 +105,9 @@ export const lokaleQuelle: Inhaltsquelle = {
     let roh: RohSeite;
     try {
       roh = await json<RohSeite>(`seiten/${slug}.json`);
-    } catch {
-      return null;
+    } catch (err) {
+      if (fehltNur(err)) return null;
+      throw err;
     }
     return { ...roh, bausteine: await Promise.all(roh.bausteine.map((b) => baustein(b, slug))) };
   },

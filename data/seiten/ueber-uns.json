@@ -131,7 +131,7 @@
       "_type": "aufrufBaustein",
       "_key": "ueber-aufruf",
       "titel": "Lernen Sie uns kennen.",
-      "text": "Ein Anruf genügt – oder kommen Sie an der Weststrasse vorbei.",
+      "text": "Rufen Sie an oder kommen Sie an der Weststrasse vorbei.",
       "knopf": {
         "titel": "Anrufen 044 450 43 73",
         "ziel": "tel:+41444504373"

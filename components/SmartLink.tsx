@@ -1,11 +1,12 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
-import { istExternerLink } from "@/lib/assets";
+import { istExternerLink, sichererLink } from "@/lib/assets";
 
 type Props = Omit<ComponentProps<"a">, "href"> & { href: string; extern?: boolean };
 
 /** Interner Link → next/link (mit Unterpfad); extern/tel/mailto → normales <a>. */
-export function SmartLink({ href, extern, children, ...rest }: Props) {
+export function SmartLink({ href: roh, extern, children, ...rest }: Props) {
+  const href = sichererLink(roh);
   if (istExternerLink(href)) {
     const neuerTab = extern ?? href.startsWith("http");
     return (

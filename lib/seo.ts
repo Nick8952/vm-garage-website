@@ -62,9 +62,12 @@ export function betriebJsonLd(e: Einstellungen): Record<string, unknown> {
   };
 }
 
+/** «044 450 43 73», «+41 44 …», «0041 44 …» → «+41444504373» (E.164 für tel:-Links und JSON-LD). */
 export function telefonInternational(tel: string): string {
   const ziffern = tel.replace(/\D/g, "");
-  return ziffern.startsWith("0") ? `+41${ziffern.slice(1)}` : `+${ziffern}`;
+  if (ziffern.startsWith("00")) return `+${ziffern.slice(2)}`;
+  if (ziffern.startsWith("0")) return `+41${ziffern.slice(1)}`;
+  return `+${ziffern}`;
 }
 
 /** JSON-LD sicher in ein <script> einbetten: «<» wird escaped, damit kein HTML entsteht. */

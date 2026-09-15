@@ -4,7 +4,7 @@
 
 - Demo (GitHub Pages, noindex): https://nick8952.github.io/vm-garage-website/
 - Repository: https://github.com/Nick8952/vm-garage-website
-- Betreiberin der Demo: Nick Holzbecher (Impressum); dargestelltes Unternehmen: V & M Garage GmbH, Weststrasse 117/119, 8003 Zürich
+- Verantwortlich für die Demo: Nick Holzbecher (Impressum); dargestelltes Unternehmen: V & M Garage GmbH, Weststrasse 117/119, 8003 Zürich
 
 ## Was fertig ist
 
@@ -24,7 +24,7 @@
 
 ## Rechtlich zu prüfen (nicht anwaltlich geprüft)
 
-- Impressum: für die Demo nur Name + E-Mail der Betreiberin (keine Postadresse). Beim Go-Live vollständige Angaben des Unternehmens.
+- Impressum: für die Demo nur Name + E-Mail der verantwortlichen Person (keine Postadresse). Beim Go-Live vollständige Angaben des Unternehmens.
 - Datenschutzerklärung: GitHub-Pages-Hosting (USA), Rechtsgrundlage «berechtigtes Interesse», Betroffenenrechte nach DSG/DSGVO,
   Speicherfristen bewusst nicht behauptet. Beim Umzug auf Vercel/Sanity neu fassen (docs/UMSTELLUNG-VERCEL.md).
 - Urheberrecht am Archivfoto (alte Website des Kunden) vor Go-Live klären.

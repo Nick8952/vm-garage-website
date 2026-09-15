@@ -88,6 +88,7 @@ dokumente.push({
   ...e,
   _id: "einstellungen",
   _type: "einstellungen",
+  adresse: { _type: "adresse", ...(e.adresse as object) },
   oeffnungszeiten: ((e.oeffnungszeiten as Record<string, unknown>[]) ?? []).map((z, i) => ({ _type: "oeffnungszeit", _key: `zeit-${i}`, ...z })),
   navigation: (e.navigation as Record<string, unknown>[]).map((l, i) => ({ _type: "link", _key: `nav-${i}`, ...l })),
   rechtslinks: (e.rechtslinks as Record<string, unknown>[]).map((l, i) => ({ _type: "link", _key: `recht-${i}`, ...l })),

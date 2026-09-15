@@ -6,13 +6,13 @@
   "inhalt": [
     {
       "_type": "block",
-      "_key": "e60833c90394",
+      "_key": "5ab7b822d00c",
       "style": "h2",
       "children": [
         {
           "_type": "span",
-          "_key": "7d6f0d0e8e5c",
-          "text": "Betreiberin dieser Demo-Website",
+          "_key": "a2faf3d208ae",
+          "text": "Verantwortlich für diese Demo-Website",
           "marks": []
         }
       ],
@@ -49,18 +49,18 @@
     },
     {
       "_type": "block",
-      "_key": "4826a645bc8f",
+      "_key": "d465c86be03f",
       "style": "normal",
       "children": [
         {
           "_type": "span",
-          "_key": "ee5e3c2de25e",
+          "_key": "b576264a4107",
           "text": "Diese Website ist eine ",
           "marks": []
         },
         {
           "_type": "span",
-          "_key": "50c361b54b5e",
+          "_key": "f27059f9a3b6",
           "text": "unverbindliche Gestaltungs-Demo",
           "marks": [
             "strong"
@@ -68,8 +68,8 @@
         },
         {
           "_type": "span",
-          "_key": "8ed736732ca9",
-          "text": ": ein Vorschlag, wie ein neuer Webauftritt der V & M Garage GmbH aussehen könnte. Sie wurde nicht von der V & M Garage GmbH in Auftrag gegeben, betrieben oder freigegeben und stellt kein Angebot dieses Unternehmens dar. Verantwortlich für Inhalt und Betrieb der Demo ist ausschliesslich die oben genannte Betreiberin.",
+          "_key": "6a90a4704266",
+          "text": ": ein Vorschlag, wie ein neuer Webauftritt der V & M Garage GmbH aussehen könnte. Sie wurde nicht von der V & M Garage GmbH in Auftrag gegeben, betrieben oder freigegeben und stellt kein Angebot dieses Unternehmens dar. Verantwortlich für Inhalt und Betrieb der Demo ist ausschliesslich die oben genannte Person.",
           "marks": []
         }
       ],
@@ -218,13 +218,13 @@
     },
     {
       "_type": "block",
-      "_key": "cbb7d2b96f9c",
+      "_key": "527363605749",
       "style": "normal",
       "children": [
         {
           "_type": "span",
-          "_key": "97f79be5fda0",
-          "text": "Gestaltung und Texte dieser Demo: Nick Holzbecher. Das Archivfoto der Werkstattfassade stammt vom früheren Webauftritt der V & M Garage GmbH (2013). Die verwendeten Schriften Familjen Grotesk, Karla und JetBrains Mono stehen unter der SIL Open Font License 1.1.",
+          "_key": "d15bb6582b4a",
+          "text": "Gestaltung und neu verfasste Texte dieser Demo: Nick Holzbecher. Übernommene Unternehmensaussagen (Leistungsliste, Grundsatz der Kundenbetreuung) stammen aus dem früheren Webauftritt der V & M Garage GmbH. Das Archivfoto der Werkstattfassade stammt vom früheren Webauftritt der V & M Garage GmbH (2013). Die verwendeten Schriften Familjen Grotesk, Karla und JetBrains Mono stehen unter der SIL Open Font License 1.1.",
           "marks": []
         }
       ],

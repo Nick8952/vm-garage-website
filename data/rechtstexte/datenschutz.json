@@ -238,13 +238,13 @@
     },
     {
       "_type": "block",
-      "_key": "f7c99d1b68da",
+      "_key": "30291853457d",
       "style": "normal",
       "children": [
         {
           "_type": "span",
-          "_key": "9190c25414eb",
-          "text": "Der Anfrage-Assistent auf der Kontaktseite läuft vollständig in Ihrem Browser. Was Sie eintragen, wird weder an uns noch an Dritte übermittelt und nicht gespeichert; beim Verlassen der Seite sind die Eingaben weg. Mit «Text kopieren» legen Sie den vorbereiteten Text in die Zwischenablage Ihres Geräts. Ist eine E-Mail-Adresse des Unternehmens hinterlegt, öffnet «E-Mail vorbereiten» Ihr eigenes E-Mail-Programm mit einem vorbefüllten Entwurf; versendet wird erst, wenn Sie dies dort selbst auslösen.",
+          "_key": "a5bc2283b771",
+          "text": "Der Anfrage-Assistent auf der Kontaktseite läuft vollständig in Ihrem Browser. Was Sie eintragen, wird von dieser Website weder an uns noch an Dritte übermittelt und nicht dauerhaft gespeichert; die Website legt die Eingaben in keinem Speicher ab (Ihr Browser kann Formulareingaben vorübergehend selbst zwischenspeichern, etwa beim Zurückblättern). Mit «Text kopieren» legen Sie den vorbereiteten Text in die Zwischenablage Ihres Geräts. Ist eine E-Mail-Adresse des Unternehmens hinterlegt, öffnet «E-Mail vorbereiten» Ihr eigenes E-Mail-Programm mit einem vorbefüllten Entwurf; versendet wird erst, wenn Sie dies dort selbst auslösen.",
           "marks": []
         }
       ],
@@ -252,13 +252,13 @@
     },
     {
       "_type": "block",
-      "_key": "25bcdceef9be",
+      "_key": "20f14cb8bac3",
       "style": "normal",
       "children": [
         {
           "_type": "span",
-          "_key": "ba1d8dea5a4b",
-          "text": "Wenn Sie telefonisch Kontakt aufnehmen, verarbeitet das Unternehmen Ihre Angaben zur Bearbeitung Ihres Anliegens. Schreiben Sie der Betreiberin der Demo per E-Mail, werden Ihre Angaben nur zur Beantwortung Ihrer Nachricht verwendet.",
+          "_key": "648a2c7202fb",
+          "text": "Wenn Sie telefonisch Kontakt aufnehmen, verarbeitet das Unternehmen Ihre Angaben zur Bearbeitung Ihres Anliegens. Schreiben Sie der für die Demo verantwortlichen Person per E-Mail, werden Ihre Angaben nur zur Beantwortung Ihrer Nachricht verwendet.",
           "marks": []
         }
       ],

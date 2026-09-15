@@ -87,7 +87,7 @@ export function AnfrageAssistent({ leistungen, telefon, tel, email, firmenname, 
           <label htmlFor={`${id}-anliegen`} className="mb-1.5 block font-semibold">
             Anliegen <span className="text-rot" aria-hidden="true">*</span>
           </label>
-          <select id={`${id}-anliegen`} className="feld" value={anliegen} onChange={(e) => setAnliegen(e.target.value)} required aria-required="true" aria-invalid={fehler ? "true" : undefined} aria-describedby={fehler ? `${id}-fehler` : undefined}>
+          <select id={`${id}-anliegen`} className="feld" value={anliegen} onChange={(e) => { setAnliegen(e.target.value); if (e.target.value) setFehler(null); }} required aria-required="true" aria-invalid={fehler ? "true" : undefined} aria-describedby={fehler ? `${id}-fehler` : undefined}>
             <option value="">Bitte wählen</option>
             {leistungen.map((l) => (
               <option key={l.id} value={l.id}>
@@ -135,9 +135,11 @@ export function AnfrageAssistent({ leistungen, telefon, tel, email, firmenname, 
       </div>
 
       {fertig && (
-        <div className="mt-8 border-t border-linie pt-6" role="region" aria-live="polite" aria-label="Vorbereitete Anfrage">
+        <div className="mt-8 border-t border-linie pt-6" role="region" aria-label="Vorbereitete Anfrage">
+          {/* Kurze Live-Ansage statt der ganzen (sich ändernden) Vorschau */}
+          <p className="sr-only" role="status">Anfragetext zusammengestellt. Er wird nicht versendet.</p>
           <p className="etikett">Ihre Anfrage – nicht versendet</p>
-          <pre className="mt-3 whitespace-pre-wrap rounded border border-linie bg-beton-hell p-4 font-sans text-[0.97rem] leading-relaxed">{text}</pre>
+          <pre className="mt-3 whitespace-pre-wrap break-words [overflow-wrap:anywhere] rounded border border-linie bg-beton-hell p-4 font-sans text-[0.97rem] leading-relaxed">{text}</pre>
           <div className="mt-4 flex flex-wrap gap-3">
             {mailto ? (
               <a href={mailto} className="knopf knopf-rot">

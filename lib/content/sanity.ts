@@ -21,7 +21,7 @@ export const INHALT_TAG = "inhalt";
 async function abfrage<T>(query: string, params: Record<string, unknown> = {}): Promise<T> {
   sanityPruefen();
   const vorschau = await istVorschau();
-  const c = vorschau ? vorschauClient() : client;
+  const c = vorschau ? vorschauClient() : client();
   return c.fetch<T>(query, params, vorschau ? { cache: "no-store" } : { next: { revalidate: false, tags: [INHALT_TAG] } });
 }
 

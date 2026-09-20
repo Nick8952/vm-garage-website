@@ -1,8 +1,14 @@
-import { createImageUrlBuilder, type SanityImageSource } from "@sanity/image-url";
+import { createImageUrlBuilder, type ImageUrlBuilder, type SanityImageSource } from "@sanity/image-url";
 import { client } from "./client";
 import type { Bild } from "@/lib/content/types";
 
-const builder = createImageUrlBuilder(client);
+// Lazy wie `client()` selbst: der Builder braucht eine echte Client-Instanz, die
+// `client()` erst beim ersten Aufruf baut – nie schon beim Import dieser Datei.
+let _builder: ImageUrlBuilder | undefined;
+function builder(): ImageUrlBuilder {
+  _builder ??= createImageUrlBuilder(client());
+  return _builder;
+}
 const BREITEN = [480, 960, 1600];
 
 /** Rohform, wie sie die GROQ-Projektion `BILD_PROJEKTION` liefert. */
@@ -32,7 +38,7 @@ export function sanityBild(roh: SanityBildRoh | null | undefined, fallbackAlt = 
     bildunterschrift: roh.bildunterschrift,
     quellen: BREITEN.filter((b) => b <= dims.width || b === BREITEN[0]).map((b) => ({
       breite: Math.min(b, dims.width),
-      url: builder.image(quelle).width(Math.min(b, dims.width)).auto("format").fit("max").url(),
+      url: builder().image(quelle).width(Math.min(b, dims.width)).auto("format").fit("max").url(),
     })),
   };
 }
